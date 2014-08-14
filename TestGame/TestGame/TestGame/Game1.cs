@@ -22,6 +22,14 @@ namespace TestGame
         Texture2D ball;
         Texture2D bat;
 
+        //Screen parameters
+        int screenWidth;
+        int screeHeight;
+
+        Vector2 velocity;
+
+        Rectangle ballbox;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -51,6 +59,16 @@ namespace TestGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            ball = Content.Load<Texture2D>("boll");
+            ballbox = new Rectangle(10, 10, 30, 30);
+
+            velocity.X = 3f;
+            velocity.Y = 3f;
+
+            screenWidth = GraphicsDevice.Viewport.Width;
+            screeHeight = GraphicsDevice.Viewport.Height;
+
+
         }
 
         /// <summary>
@@ -75,7 +93,36 @@ namespace TestGame
 
             // TODO: Add your update logic here
 
+            ballbox.X = ballbox.X + (int)velocity.X;
+            ballbox.Y = ballbox.Y + (int)velocity.Y;
+
+            ballbox.X = ballbox.X + (int)velocity.X;
+            ballbox.Y = ballbox.Y + (int)velocity.Y;
+
+            if (ballbox.X <= 0)
+            {
+                velocity.X = -velocity.X;
+            }
+
+            if (ballbox.X + ballbox.Width >= screenWidth)
+            {
+                velocity.X = -velocity.X;
+            }
+
+            if (ballbox.Y <= 0)
+            {
+                velocity.Y = -velocity.Y;
+            }
+
+            if (ballbox.Y + ballbox.Height >= screeHeight)
+            {
+                velocity.Y = -velocity.Y;
+                //velocity.X = -velocity.X;
+            }
+
             base.Update(gameTime);
+
+
         }
 
         /// <summary>
@@ -87,6 +134,11 @@ namespace TestGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(ball, ballbox, Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
