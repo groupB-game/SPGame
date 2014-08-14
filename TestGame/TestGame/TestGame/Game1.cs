@@ -19,6 +19,8 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Texture2D ball;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
