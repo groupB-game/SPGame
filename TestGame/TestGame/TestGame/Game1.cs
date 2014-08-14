@@ -20,6 +20,7 @@ namespace TestGame
         SpriteBatch spriteBatch;
 
         Texture2D ball;
+        Texture2D bat;
 
         public Game1()
         {
