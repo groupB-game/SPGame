@@ -40,39 +40,30 @@ namespace TestGame
             origin = new Vector2(rectangle.Width / 2, rectangle.Height / 2);
             position = position + velocity;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
+            //if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            //{
                 AnimateReight(gameTime);
-                velocity.X = 3;
+                //velocity.X = 3;
 
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            //}
+             
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped ==false )
             {
-                AnimateReight(gameTime);
-                velocity.X = -3;
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped ==false )
-            {
-                position.Y -= 10f;
-                velocity.Y = -5f;
+                position.Y -= 60f;
+                velocity.Y = -8f;
                 hasJumped = true;
 
 
 
             }
-            
-            else
-            {
-                velocity.X = -0.5f;
-
-            }
+          
 
             if (hasJumped == true)
             {
                 float i = 1;
                 velocity.Y += 0.15f * i;
             }
-            if (position.Y + texture.Height >= 450)
+            if (position.Y + texture.Height >= 1020)
             {
                 hasJumped =false;
             }
@@ -92,7 +83,7 @@ namespace TestGame
             {
                 currentFrame++;
                 timer = 0;
-                if (currentFrame > 3)
+                if (currentFrame > 5)
                 {
                     currentFrame = 0;
                 }

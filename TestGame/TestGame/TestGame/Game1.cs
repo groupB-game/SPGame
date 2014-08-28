@@ -22,6 +22,9 @@ namespace TestGame
         Texture2D ball;
         Animation runner;
 
+        //Scrolling Path
+        private ScrollingPath scrolling1,scrolling2;
+
         //Screen parameters
         int screenWidth;
         int screeHeight;
@@ -50,7 +53,8 @@ namespace TestGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            runner = new Animation(Content.Load<Texture2D>("Runner"), new Vector2(200, 350), 96, 98);
+            //Runner
+            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(200, 730), 288, 294);
             base.Initialize();
         }
 
@@ -65,9 +69,12 @@ namespace TestGame
 
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
+
             ballbox = new Rectangle(10, 10, 30, 30);
 
-            //Runner
+            //Scrolling path
+            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,850,1920,150));
+            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 850, 1920, 150));
             
             
 
@@ -100,6 +107,10 @@ namespace TestGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            //graphics.IsFullScreen 1920 1080;
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1900;
+            graphics.ApplyChanges();
             // TODO: Add your update logic here
 
             ballbox.X = ballbox.X + (int)velocity.X;
@@ -134,6 +145,20 @@ namespace TestGame
             //runner 
             runner.Update(gameTime);
 
+            //Scrolling path
+            
+
+            if (scrolling1.rectangle.X + 1920 <= 0)
+            {
+                scrolling1.rectangle.X = scrolling2.rectangle.X + 1920;
+            }
+            if (scrolling2.rectangle.X + 1920 <= 0)
+            {
+                scrolling2.rectangle.X = scrolling1.rectangle.X + 1920;
+            }
+
+            scrolling1.Update();
+            scrolling2.Update();
            
            base.Update(gameTime);
 
@@ -153,8 +178,10 @@ namespace TestGame
             spriteBatch.Begin();
 
              //spriteBatch.Draw(ball, ballbox, Color.White);
+            
+            scrolling1.Drow(spriteBatch);
+            scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
-
             spriteBatch.End();
 
             

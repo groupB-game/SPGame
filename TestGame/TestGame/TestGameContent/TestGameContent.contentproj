@@ -51,15 +51,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="lecture-wide.png">
-      <Name>lecture-wide</Name>
+    <Compile Include="path2.png">
+      <Name>path2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="lecture.png">
-      <Name>lecture</Name>
+    <Compile Include="Runner2.png">
+      <Name>Runner2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Runner3.png">
+      <Name>Runner3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
