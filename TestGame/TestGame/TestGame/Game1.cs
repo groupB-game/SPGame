@@ -19,7 +19,7 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D ball;
+        Texture2D ball,backGround;
         Animation runner;
 
         //Scrolling Path
@@ -32,7 +32,7 @@ namespace TestGame
         Vector2 velocity;
 
         Rectangle ballbox;
-        Rectangle runnerBox;
+        Rectangle runnerBox,backGroundBox;
 
         //Animater object
 
@@ -75,6 +75,8 @@ namespace TestGame
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,850,1920,150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 850, 1920, 150));
+            backGround = Content.Load<Texture2D>("fred");
+            backGroundBox = new Rectangle(0, 0, 2000, 1080);
             
             
 
@@ -178,7 +180,7 @@ namespace TestGame
             spriteBatch.Begin();
 
              //spriteBatch.Draw(ball, ballbox, Color.White);
-            
+            spriteBatch.Draw(backGround ,backGroundBox ,Color.White );
             scrolling1.Drow(spriteBatch);
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
