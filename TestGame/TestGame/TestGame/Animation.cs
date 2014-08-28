@@ -40,21 +40,19 @@ namespace TestGame
             origin = new Vector2(rectangle.Width / 2, rectangle.Height / 2);
             position = position + velocity;
 
-            //if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            //{
-                AnimateReight(gameTime);
-                //velocity.X = 3;
-
-            //}
+           
              
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped ==false )
             {
+                
                 position.Y -= 60f;
                 velocity.Y = -8f;
                 hasJumped = true;
 
-
-
+            }
+            else
+            {
+                AnimateReight(gameTime);
             }
           
 
@@ -100,6 +98,20 @@ namespace TestGame
                 if (currentFrame > 7 || currentFrame <4)
                 {
                     currentFrame = 4;
+                }
+            }
+        }
+
+        public void AnimateJumpingUp(GameTime gameTime)
+        {
+            timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
+            if (timer > interval)
+            {
+                currentFrame++;
+                timer = 0;
+                if (currentFrame > 1)
+                {
+                    currentFrame = 0;
                 }
             }
         }
