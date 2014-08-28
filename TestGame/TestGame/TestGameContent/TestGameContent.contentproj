@@ -37,8 +37,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="computer lab background.png">
-      <Name>computer lab background</Name>
+    <Compile Include="Runner.png">
+      <Name>Runner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="path.png">
+      <Name>path</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="lecture.png">
+      <Name>lecture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UNEMPLOYMENT.png">
+      <Name>UNEMPLOYMENT</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
