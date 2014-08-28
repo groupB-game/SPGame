@@ -37,13 +37,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Runner Hat.png">
-      <Name>Runner Hat</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Runner No Hat.png">
-      <Name>Runner No Hat</Name>
+    <Compile Include="Runner.png">
+      <Name>Runner</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

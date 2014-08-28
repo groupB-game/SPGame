@@ -20,7 +20,7 @@ namespace TestGame
         SpriteBatch spriteBatch;
 
         Texture2D ball;
-        Texture2D runner;
+        Animation runner;
 
         //Screen parameters
         int screenWidth;
@@ -33,7 +33,7 @@ namespace TestGame
 
         //Animater object
 
-        private AnimatedSprite animate;
+        
 
         public Game1()
         {
@@ -50,7 +50,7 @@ namespace TestGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            runner = new Animation(Content.Load<Texture2D>("Runner"), new Vector2(200, 350), 96, 98);
             base.Initialize();
         }
 
@@ -68,8 +68,8 @@ namespace TestGame
             ballbox = new Rectangle(10, 10, 30, 30);
 
             //Runner
-            runner = Content.Load<Texture2D>("Runner No Hat");
-            animate = new AnimatedSprite(runner, 1,4);
+            
+            
 
             velocity.X = 3f;
             velocity.Y = 3f;
@@ -132,8 +132,9 @@ namespace TestGame
             
 
             //runner 
+            runner.Update(gameTime);
 
-            animate.Update(gameTime);
+           
            base.Update(gameTime);
 
             
@@ -151,12 +152,12 @@ namespace TestGame
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-           spriteBatch.Draw(ball, ballbox, Color.White);
-            spriteBatch.Draw(runner, runnerBox, Color.White);
+             //spriteBatch.Draw(ball, ballbox, Color.White);
+            runner.Draw(spriteBatch);
 
             spriteBatch.End();
 
-            animate.Draw(spriteBatch, new Vector2(400, 200));
+            
 
             base.Draw(gameTime);
         }
