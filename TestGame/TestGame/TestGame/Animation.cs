@@ -40,35 +40,43 @@ namespace TestGame
             origin = new Vector2(rectangle.Width / 2, rectangle.Height / 2);
             position = position + velocity;
 
-           
+            
              
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped ==false )
             {
-                
+               
                 position.Y -= 60f;
                 velocity.Y = -8f;
                 hasJumped = true;
 
             }
-            else
+            else 
             {
-                AnimateReight(gameTime);
+               AnimateReight(gameTime);
+               velocity.X = 0.2f;
             }
           
 
             if (hasJumped == true)
             {
-                float i = 1;
+                float i = 1.5f;
                 velocity.Y += 0.15f * i;
             }
-            if (position.Y + texture.Height >= 1020)
+            if (position.Y + texture.Height >= 1010)
             {
+                
                 hasJumped =false;
             }
             if (hasJumped == false)
             {
                 velocity.Y = 0f;
             }
+            if (position.Y <= 650)
+            {
+                currentFrame = 2;
+            }
+
+            
 
         }
 
@@ -104,6 +112,7 @@ namespace TestGame
 
         public void AnimateJumpingUp(GameTime gameTime)
         {
+
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
             if (timer > interval)
             {
@@ -111,9 +120,10 @@ namespace TestGame
                 timer = 0;
                 if (currentFrame > 1)
                 {
-                    currentFrame = 0;
+                    currentFrame = 1;
                 }
             }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
