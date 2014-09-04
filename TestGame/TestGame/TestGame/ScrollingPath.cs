@@ -18,6 +18,7 @@ namespace TestGame
             this.rectangle = newRectangle;
         }
 
+        // Path speed
         public void Update()
         {
             rectangle.X -= 10;
