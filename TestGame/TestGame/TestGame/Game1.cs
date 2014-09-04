@@ -19,11 +19,13 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+
         Texture2D ball,backGround;
         Animation runner;
 
         //Scrolling Path
         private ScrollingPath scrolling1,scrolling2;
+        private BackGround backGround1, backGround2;
 
         //Screen parameters
         int screenWidth;
@@ -79,8 +81,12 @@ namespace TestGame
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
-            backGround = Content.Load<Texture2D>("LabBG2");
-            backGroundBox = new Rectangle(0, 0, 2000, 1080);
+            backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
+            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(1920, 0, 2000, 1080));
+           
+            //Stady background
+            //backGround = Content.Load<Texture2D>("LabBGNew");
+            //backGroundBox = new Rectangle(0, 0, 2000, 1080);
             
             
 
@@ -144,6 +150,8 @@ namespace TestGame
 
             scrolling1.Update();
             scrolling2.Update();
+            backGround1.Update();
+            backGround2.Update();
            
            base.Update(gameTime);
 
@@ -163,7 +171,9 @@ namespace TestGame
             spriteBatch.Begin();
 
              //spriteBatch.Draw(ball, ballbox, Color.White);
-            spriteBatch.Draw(backGround ,backGroundBox ,Color.White );
+           //spriteBatch.Draw(backGround ,backGroundBox ,Color.White );
+            backGround1.Drow(spriteBatch);
+            backGround2.Drow(spriteBatch);
             scrolling1.Drow(spriteBatch);
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
