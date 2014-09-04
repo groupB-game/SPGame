@@ -35,6 +35,7 @@ namespace TestGame
 
         Rectangle ballbox;
         Rectangle runnerBox,backGroundBox;
+        Random randomNumber;
 
         //Hurdles
         private Hurdles hurdle1, hurdle2;
@@ -74,6 +75,11 @@ namespace TestGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Random number generator
+            randomNumber = new Random();
+            int newrandom = randomNumber.Next(2010,3000);
+
+
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
 
@@ -82,8 +88,8 @@ namespace TestGame
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
-            backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
-            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(1920, 0, 2000, 1080));
+            backGround1 = new BackGround(Content.Load<Texture2D>("LabBGLatestn"), new Rectangle(0, 0, 2000, 1080));
+            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGLatestn"), new Rectangle(1920, 0, 2000, 1080));
            
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
@@ -100,7 +106,7 @@ namespace TestGame
             //Hurdles load
 
             hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
-            hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 790, 150, 150));
+            hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 650, 150, 150));
 
 
         }
@@ -208,6 +214,14 @@ namespace TestGame
             
 
             base.Draw(gameTime);
+        }
+
+        public void Collition()
+        {
+            if (runner.rectangle.Intersects(hurdle1.rectangle))
+            {
+              
+            }
         }
     }
 }

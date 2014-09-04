@@ -89,6 +89,8 @@ namespace TestGame
         }
 
         //Collision
+
+        
        
         public void AnimateReight(GameTime gameTiem)
         {
