@@ -121,9 +121,9 @@ namespace TestGame
             }
 
             //graphics.IsFullScreen 1920 1080;
-            graphics.PreferredBackBufferHeight = 1000;
-            graphics.PreferredBackBufferWidth = 1900;
-            graphics.ApplyChanges();
+            //graphics.PreferredBackBufferHeight = 1000;
+            //graphics.PreferredBackBufferWidth = 1900;
+            //graphics.ApplyChanges();
             // TODO: Add your update logic here
 
             ballbox.X = ballbox.X + (int)velocity.X;
