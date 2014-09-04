@@ -20,7 +20,7 @@ namespace TestGame
 
         public void Update()
         {
-            rectangle.X -= 2;
+            rectangle.X -= 10;
         }
 
         public void Drow(SpriteBatch spriteBatch)

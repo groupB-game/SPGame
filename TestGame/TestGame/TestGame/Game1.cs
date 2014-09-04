@@ -37,7 +37,7 @@ namespace TestGame
         Rectangle runnerBox,backGroundBox;
 
         //Hurdles
-        private Hurdles hurdle1;
+        private Hurdles hurdle1, hurdle2;
 
         
 
@@ -99,7 +99,8 @@ namespace TestGame
 
             //Hurdles load
 
-            //hurdle1 = new Hurdles(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
+            hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
+            hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 790, 150, 150));
 
 
         }
@@ -157,10 +158,24 @@ namespace TestGame
                 backGround2.rectangle.X = backGround1.rectangle.X + 2000;
             }
 
+            //Hurdle looping
+            if (hurdle1.rectangle.X + 2000 <= 0)
+            {
+                hurdle1.rectangle.X = hurdle2.rectangle.X + 2000;
+            }
+            if (hurdle2.rectangle.X + 2000 <= 0)
+            {
+                hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
+            }
+
+
+
             scrolling1.Update();
             scrolling2.Update();
             backGround1.Update();
             backGround2.Update();
+            hurdle1.Update();
+            hurdle2.Update();
            
            base.Update(gameTime);
 
@@ -186,6 +201,8 @@ namespace TestGame
             scrolling1.Drow(spriteBatch);
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
+            hurdle1.Drow(spriteBatch);
+            hurdle2.Drow(spriteBatch);
             spriteBatch.End();
 
             
