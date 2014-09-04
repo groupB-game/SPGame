@@ -46,7 +46,7 @@ namespace TestGame
             {
                
                 position.Y -= 60f;
-                velocity.Y = -8f;
+                velocity.Y = -15f;
                 hasJumped = true;
 
             }
@@ -59,10 +59,10 @@ namespace TestGame
 
             if (hasJumped == true)
             {
-                float i = 1.5f;
-                velocity.Y += 0.15f * i;
+                float i = 0.75f;
+                velocity.Y += 0.45f * i;
             }
-            if (position.Y + texture.Height >= 1090)
+            if (position.Y + texture.Height >= 1175)
             {
                 
                 hasJumped =false;

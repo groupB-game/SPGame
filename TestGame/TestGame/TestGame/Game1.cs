@@ -58,7 +58,7 @@ namespace TestGame
         {
             // TODO: Add your initialization logic here
             //Runner
-            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 810), 288, 294);
+            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 880), 288, 294);
             base.Initialize();
         }
 
