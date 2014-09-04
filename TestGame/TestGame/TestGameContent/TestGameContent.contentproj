@@ -114,15 +114,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LabBGLatest.png">
-      <Name>LabBGLatest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="LabBGLatestn.png">
-      <Name>LabBGLatestn</Name>
+    <Compile Include="%28b%29F pickup.png">
+      <Name>%28b%29F pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
