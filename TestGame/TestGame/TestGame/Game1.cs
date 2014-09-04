@@ -75,7 +75,7 @@ namespace TestGame
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,850,1920,150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 850, 1920, 150));
-            backGround = Content.Load<Texture2D>("fred");
+            backGround = Content.Load<Texture2D>("LabBG2");
             backGroundBox = new Rectangle(0, 0, 2000, 1080);
             
             
