@@ -71,9 +71,17 @@ namespace TestGame
             {
                 velocity.Y = 0f;
             }
-            if (position.Y <= 650)
+            //if (position.Y <= 650)
+            //{
+            //    currentFrame = 2;
+            //}
+            if (velocity.Y >0)
             {
                 currentFrame = 2;
+            }
+            if (velocity.Y < 0)
+            {
+                currentFrame = 1;
             }
 
             

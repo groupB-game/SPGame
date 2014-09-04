@@ -120,39 +120,11 @@ namespace TestGame
                 this.Exit();
             }
 
-            //graphics.IsFullScreen 1920 1080;
-            //graphics.PreferredBackBufferHeight = 1000;
-            //graphics.PreferredBackBufferWidth = 1900;
-            //graphics.ApplyChanges();
-            // TODO: Add your update logic here
+            
 
-            ballbox.X = ballbox.X + (int)velocity.X;
-            ballbox.Y = ballbox.Y + (int)velocity.Y;
+           
 
-            ballbox.X = ballbox.X + (int)velocity.X;
-            ballbox.Y = ballbox.Y + (int)velocity.Y;
-
-            if (ballbox.X <= 0)
-            {
-                velocity.X = -velocity.X;
-            }
-
-            if (ballbox.X + ballbox.Width >= screenWidth)
-            {
-                velocity.X = -velocity.X;
-            }
-
-            if (ballbox.Y <= 0)
-            {
-                velocity.Y = -velocity.Y;
-            }
-
-            if (ballbox.Y + ballbox.Height >= screeHeight)
-            {
-                velocity.Y = -velocity.Y;
-                //velocity.X = -velocity.X;
-            }
-
+            
             
 
             //runner 
