@@ -62,7 +62,7 @@ namespace TestGame
                 float i = 1.5f;
                 velocity.Y += 0.15f * i;
             }
-            if (position.Y + texture.Height >= 1010)
+            if (position.Y + texture.Height >= 1090)
             {
                 
                 hasJumped =false;
