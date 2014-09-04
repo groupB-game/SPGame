@@ -53,7 +53,7 @@ namespace TestGame
             else 
             {
                AnimateReight(gameTime);
-               velocity.X = 0.2f;
+               //velocity.X = 0.2f; moved character forward, not needed for now
             }
           
 
