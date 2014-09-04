@@ -50,19 +50,19 @@ namespace TestGame
                 hasJumped = true;
 
             }
-            else 
+            else
             {
-               AnimateReight(gameTime);
-               //velocity.X = 0.2f; moved character forward, not needed for now
+                AnimateReight(gameTime);
+                //velocity.X = 0.2f; moved character forward, not needed for now
             }
-          
+
 
             if (hasJumped == true)
             {
                 float i = 0.75f;
                 velocity.Y += 0.45f * i;
             }
-            if (position.Y + texture.Height >= 1090)
+            if (position.Y + texture.Height >= 1175)
             {
                 
                 hasJumped =false;
