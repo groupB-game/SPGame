@@ -58,13 +58,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UNEMPLOYMENT.png">
-      <Name>UNEMPLOYMENT</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="computer lab background.png">
       <Name>computer lab background</Name>
       <Importer>TextureImporter</Importer>
