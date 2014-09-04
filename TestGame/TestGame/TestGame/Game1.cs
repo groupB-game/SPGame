@@ -58,7 +58,7 @@ namespace TestGame
         {
             // TODO: Add your initialization logic here
             //Runner
-            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 720), 288, 294);
+            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 880), 288, 294);
             base.Initialize();
         }
 
@@ -77,8 +77,8 @@ namespace TestGame
             ballbox = new Rectangle(10, 10, 30, 30);
 
             //Scrolling path
-            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,850,1920,150));
-            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 850, 1920, 150));
+            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
+            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
             backGround = Content.Load<Texture2D>("LabBG2");
             backGroundBox = new Rectangle(0, 0, 2000, 1080);
             
