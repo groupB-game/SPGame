@@ -60,7 +60,7 @@ namespace TestGame
         {
             // TODO: Add your initialization logic here
             //Runner
-            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 880), 288, 294);
+            runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 810), 288, 294);
             base.Initialize();
         }
 
@@ -126,13 +126,6 @@ namespace TestGame
                 this.Exit();
             }
 
-            
-
-           
-
-            
-            
-
             //runner 
             runner.Update(gameTime);
 
@@ -146,6 +139,17 @@ namespace TestGame
             if (scrolling2.rectangle.X + 1920 <= 0)
             {
                 scrolling2.rectangle.X = scrolling1.rectangle.X + 1920;
+            }
+
+            //Scrolling Background
+
+            if (backGround1.rectangle.X + 2000 <= 0)
+            {
+                backGround1.rectangle.X = backGround2.rectangle.X + 2000;
+            }
+            if (backGround2.rectangle.X + 2000 <= 0)
+            {
+                backGround2.rectangle.X = backGround1.rectangle.X + 2000;
             }
 
             scrolling1.Update();
