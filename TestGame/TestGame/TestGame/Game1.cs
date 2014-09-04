@@ -36,7 +36,8 @@ namespace TestGame
         Rectangle ballbox;
         Rectangle runnerBox,backGroundBox;
 
-        //Animater object
+        //Hurdles
+        private Hurdles hurdle1;
 
         
 
@@ -95,6 +96,10 @@ namespace TestGame
 
             screenWidth = GraphicsDevice.Viewport.Width;
             screeHeight = GraphicsDevice.Viewport.Height;
+
+            //Hurdles load
+
+            //hurdle1 = new Hurdles(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
 
 
         }
