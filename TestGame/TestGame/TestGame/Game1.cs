@@ -41,6 +41,10 @@ namespace TestGame
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+
             Content.RootDirectory = "Content";
         }
 
@@ -107,7 +111,14 @@ namespace TestGame
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            {
                 this.Exit();
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                this.Exit();
+            }
 
             //graphics.IsFullScreen 1920 1080;
             graphics.PreferredBackBufferHeight = 1000;
