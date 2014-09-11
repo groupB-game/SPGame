@@ -121,8 +121,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Runner with hat.png">
-      <Name>Runner with hat</Name>
+    <Compile Include="RunnerHat.png">
+      <Name>RunnerHat</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -130,6 +130,13 @@
   <ItemGroup>
     <Compile Include="Grad Hat Icon.png">
       <Name>Grad Hat Icon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Runner4.png">
+      <Name>Runner4</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

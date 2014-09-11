@@ -22,10 +22,11 @@ namespace TestGame
 
         Texture2D ball,backGround;
         Animation runner;
+        //Animation runnerhat;
 
         //Scrolling Path
         private ScrollingPath scrolling1,scrolling2;
-        private BackGround backGround1, backGround2;
+        private BackGround backGround1, backGround2, backGround3;
 
         //Screen parameters
         int screenWidth;
@@ -38,7 +39,7 @@ namespace TestGame
         Random randomNumber;
 
         //Hurdles
-        private Hurdles hurdle1, hurdle2;
+        private Hurdles hurdle1, hurdle2, hurdle3;
 
         
 
@@ -63,6 +64,9 @@ namespace TestGame
             // TODO: Add your initialization logic here
             //Runner
             runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 880), 288, 294);
+
+            //Runner with hat
+            //runnerhat = new Animation(Content.Load<Texture2D>("Runner with hat"), new Vector2(640, 880), 288, 240);
             base.Initialize();
         }
 
@@ -90,6 +94,8 @@ namespace TestGame
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(1920, 0, 2000, 1080));
+            backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(3840, 0, 2000, 1080));
+
            
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
@@ -107,6 +113,8 @@ namespace TestGame
 
             hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
             hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 650, 150, 150));
+            hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
+
 
 
         }
@@ -140,6 +148,7 @@ namespace TestGame
 
             //runner 
             runner.Update(gameTime);
+            //runnerhat.Update(gameTime);
 
             //Scrolling path
             
@@ -161,7 +170,11 @@ namespace TestGame
             }
             if (backGround2.rectangle.X + 2000 <= 0)
             {
-                backGround2.rectangle.X = backGround1.rectangle.X + 2000;
+                backGround2.rectangle.X = backGround3.rectangle.X + 2000;
+            }
+            if (backGround3.rectangle.X + 2000 <= 0)
+            {
+                backGround3.rectangle.X = backGround1.rectangle.X + 2000;
             }
 
             //Hurdle looping
@@ -180,8 +193,10 @@ namespace TestGame
             scrolling2.Update();
             backGround1.Update();
             backGround2.Update();
+            backGround3.Update();
             hurdle1.Update();
             hurdle2.Update();
+            hurdle3.Update(); ;
            
            base.Update(gameTime);
 
@@ -204,11 +219,14 @@ namespace TestGame
            //spriteBatch.Draw(backGround ,backGroundBox ,Color.White );
             backGround1.Drow(spriteBatch);
             backGround2.Drow(spriteBatch);
+            backGround3.Drow(spriteBatch);
             scrolling1.Drow(spriteBatch);
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
+            //runnerhat.Draw(spriteBatch);
             hurdle1.Drow(spriteBatch);
             hurdle2.Drow(spriteBatch);
+            hurdle3.Drow(spriteBatch);
             spriteBatch.End();
 
             
