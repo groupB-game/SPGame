@@ -94,8 +94,8 @@ namespace TestGame
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
             backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(4000, 0, 2000, 1080));
-            backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG"), new Rectangle(6000, 0, 2000, 1080));
-            backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG"), new Rectangle(8000, 0, 2000, 1080));
+            backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(6000, 0, 2000, 1080));
+            backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(8000, 0, 2000, 1080));
 
            
             //Stady background
