@@ -242,6 +242,7 @@ namespace TestGame
             }
 
 
+
             scrolling1.Update();
             scrolling2.Update();
             backGround1.Update();
