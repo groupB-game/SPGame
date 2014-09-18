@@ -150,8 +150,12 @@ namespace TestGame
             count++;
             if(count == 500)
             {
-                runner = new Animation(Content.Load<Texture2D>("RunnerWHat"), new Vector2(640, 865), 330, 288);
-                runner.currentFrame = 2;
+                int cframe = runner.currentFrame;
+                float ypos = runner.position.Y;
+                float xpos = runner.position.X;
+
+                runner = new Animation(Content.Load<Texture2D>("RunnerWHat"), new Vector2(xpos, ypos), 330, 288);
+                runner.currentFrame = cframe;
             }
 
             //Scrolling path
