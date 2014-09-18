@@ -131,8 +131,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29Flu_pickup.png">
-      <Name>%28b%29Flu_pickup</Name>
+    <Compile Include="%28b%29flu_pickup.png">
+      <Name>%28b%29flu_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -151,13 +151,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29Missed_alarm_pickup.png">
-      <Name>%28b%29Missed_alarm_pickup</Name>
+    <Compile Include="%28b%29missed_alarm_pickup.png">
+      <Name>%28b%29missed_alarm_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29moodle_down_ pickup.png">
-      <Name>%28b%29moodle_down_ pickup</Name>
+    <Compile Include="%28b%29moodle_down_pickup.png">
+      <Name>%28b%29moodle_down_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

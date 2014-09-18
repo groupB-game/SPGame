@@ -79,8 +79,9 @@ namespace TestGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Random number generator
-            randomNumber = new Random();
-            int newrandom = randomNumber.Next(2010,3000);
+            //randomNumber = new Random();
+            //int newrandom = randomNumber.Next(0,19);
+            //int newrandom = randomNumber.Next(2010,3000);
 
 
             // TODO: use this.Content to load your game content here
@@ -111,9 +112,41 @@ namespace TestGame
             screeHeight = GraphicsDevice.Viewport.Height;
 
             //Hurdles load
+            for (int i = 0; i < 20; i++)
+            {
+                randomNumber = new Random();
+                int newrandom = randomNumber.Next(0, 19);
+                var hurdlepickup = new List<string>
+                {
+                    "(b)bad_tutor_pickup",
+                    "(b)f_pickup",
+                    "(b)flash_drive_pickup",
+                    "(b)flu_pickup",
+                    "(b)forgot_due_date_pickup",
+                    "(b)goals_missed_pickup",
+                    "(b)missed_alarm_pickup",
+                    "(b)moodle_down_pickup",
+                    "(b)not_enough_sleep_pickup",
+                    "(b)repeat_paper_pickup",
+                    "(g)a+_pickup",
+                    "(g)goals_met_pickup",
+                    "(g)good_health_pickup",
+                    "(g)good_sleep_pickup",
+                    "(g)good_tutor_pickup",
+                    "(g)new_skills_pickup",
+                    "(g)notes_taken_pickup",
+                    "(g)on_time_pickup",
+                    "(g)passed_paper_pickup",
+                    "(g)study_time_pickup"
+                };
 
-            hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)a+_pickup"), new Rectangle(2010, 790, 150, 150));
-            hurdle2 = new Hurdles(Content.Load<Texture2D>("(b)f_pickup"), new Rectangle(3800, 650, 150, 150));
+                hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(2010, 790, 150, 150));
+                hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(3800, 650, 150, 150));
+                return;
+            }
+
+            //hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)a+_pickup"), new Rectangle(2010, 790, 150, 150));
+            //hurdle2 = new Hurdles(Content.Load<Texture2D>("(b)f_pickup"), new Rectangle(3800, 650, 150, 150));
             hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
 
 
@@ -214,7 +247,7 @@ namespace TestGame
             backGround5.Update();
             hurdle1.Update();
             hurdle2.Update();
-            hurdle3.Update(); ;
+            hurdle3.Update(); 
            
            base.Update(gameTime);
 
