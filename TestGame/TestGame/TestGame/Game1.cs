@@ -111,8 +111,8 @@ namespace TestGame
 
             //Hurdles load
 
-            hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
-            hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 650, 150, 150));
+            hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)a+_pickup"), new Rectangle(2010, 790, 150, 150));
+            hurdle2 = new Hurdles(Content.Load<Texture2D>("(b)f_pickup"), new Rectangle(3800, 650, 150, 150));
             hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
 
 
