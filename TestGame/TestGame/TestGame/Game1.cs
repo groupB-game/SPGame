@@ -22,7 +22,7 @@ namespace TestGame
 
         Texture2D ball,backGround;
         Animation runner;
-        //Animation runnerhat;
+        Animation hat;
 
         //Scrolling Path
         private ScrollingPath scrolling1,scrolling2;
@@ -64,9 +64,8 @@ namespace TestGame
             // TODO: Add your initialization logic here
             //Runner
             runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 880), 288, 294);
+            hat = new Animation(Content.Load<Texture2D>("Hat"), new Vector2(640, 880), 129, 288);
 
-            //Runner with hat
-            //runnerhat = new Animation(Content.Load<Texture2D>("Runner with hat"), new Vector2(640, 880), 288, 240);
             base.Initialize();
         }
 
@@ -148,7 +147,7 @@ namespace TestGame
 
             //runner 
             runner.Update(gameTime);
-            //runnerhat.Update(gameTime);
+            hat.Update(gameTime);
 
             //Scrolling path
             
@@ -188,7 +187,6 @@ namespace TestGame
             }
 
 
-
             scrolling1.Update();
             scrolling2.Update();
             backGround1.Update();
@@ -223,7 +221,7 @@ namespace TestGame
             scrolling1.Drow(spriteBatch);
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
-            //runnerhat.Draw(spriteBatch);
+            hat.Draw(spriteBatch);
             hurdle1.Drow(spriteBatch);
             hurdle2.Drow(spriteBatch);
             hurdle3.Drow(spriteBatch);
