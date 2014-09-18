@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace TestGame
 {
     /// <summary>
@@ -137,7 +138,7 @@ namespace TestGame
             {
                 this.Exit();
             }
-
+            
             //runner 
             runner.Update(gameTime);
 
@@ -182,6 +183,7 @@ namespace TestGame
             backGround2.Update();
             hurdle1.Update();
             hurdle2.Update();
+            checkBoundries(); 
            
            base.Update(gameTime);
 
@@ -208,6 +210,7 @@ namespace TestGame
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
             hurdle1.Drow(spriteBatch);
+         
             hurdle2.Drow(spriteBatch);
             spriteBatch.End();
 
@@ -220,8 +223,16 @@ namespace TestGame
         {
             if (runner.rectangle.Intersects(hurdle1.rectangle))
             {
-              
+             
             }
         }
-    }
+        private void checkBoundries()
+        {
+            if (runner.position.X >= hurdle1.rectangle.X)
+                hurdle1.rectangle.Offset(5, 8);
+
+            else if (runner.position.Y >=hurdle1.rectangle.Y)
+                hurdle1.rectangle.Offset(5, 8);
+            hurdle1.Update();
+        }    }
 }
