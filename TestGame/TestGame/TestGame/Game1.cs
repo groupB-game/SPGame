@@ -27,7 +27,7 @@ namespace TestGame
 
         //Scrolling Path
         private ScrollingPath scrolling1,scrolling2;
-        private BackGround backGround1, backGround2, backGround3;
+        private BackGround backGround1, backGround2, backGround3, backGround4, backGround5;
 
         //Screen parameters
         int screenWidth;
@@ -92,8 +92,10 @@ namespace TestGame
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
-            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(1920, 0, 2000, 1080));
-            backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(3840, 0, 2000, 1080));
+            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
+            backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(4000, 0, 2000, 1080));
+            backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG"), new Rectangle(6000, 0, 2000, 1080));
+            backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG"), new Rectangle(8000, 0, 2000, 1080));
 
            
             //Stady background
@@ -181,7 +183,15 @@ namespace TestGame
             }
             if (backGround3.rectangle.X + 2000 <= 0)
             {
-                backGround3.rectangle.X = backGround1.rectangle.X + 2000;
+                backGround3.rectangle.X = backGround4.rectangle.X + 2000;
+            }
+            if (backGround4.rectangle.X + 2000 <= 0)
+            {
+                backGround4.rectangle.X = backGround5.rectangle.X + 2000;
+            }
+            if (backGround5.rectangle.X + 2000 <= 0)
+            {
+                backGround5.rectangle.X = backGround4.rectangle.X + 2000;
             }
 
             //Hurdle looping
@@ -200,6 +210,8 @@ namespace TestGame
             backGround1.Update();
             backGround2.Update();
             backGround3.Update();
+            backGround4.Update();
+            backGround5.Update();
             hurdle1.Update();
             hurdle2.Update();
             hurdle3.Update(); ;
@@ -226,6 +238,8 @@ namespace TestGame
             backGround1.Drow(spriteBatch);
             backGround2.Drow(spriteBatch);
             backGround3.Drow(spriteBatch);
+            backGround4.Drow(spriteBatch);
+            backGround5.Drow(spriteBatch);
             scrolling1.Drow(spriteBatch);
             scrolling2.Drow(spriteBatch);
             runner.Draw(spriteBatch);
