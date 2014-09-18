@@ -18,8 +18,8 @@ namespace TestGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-
+        Texture2D BadTutor;
+        Rectangle BadTutorRec;
         Texture2D ball,backGround;
         Animation runner;
 
