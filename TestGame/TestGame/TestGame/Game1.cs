@@ -19,7 +19,8 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
+        Texture2D BadTutor;
+        Rectangle BadTutorRec;
         Texture2D ball,backGround;
         Animation runner;
         Animation hat;
@@ -39,7 +40,7 @@ namespace TestGame
         Random randomNumber;
 
         //Hurdles
-        private Hurdles hurdle1, hurdle2, hurdle3;
+        private Hurdles hurdle1, hurdle2, hurdle3, hurdle4;
 
         
 
@@ -87,6 +88,7 @@ namespace TestGame
             ball = Content.Load<Texture2D>("boll");
 
             ballbox = new Rectangle(10, 10, 30, 30);
+           
 
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
@@ -94,7 +96,7 @@ namespace TestGame
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(1920, 0, 2000, 1080));
             backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(3840, 0, 2000, 1080));
-
+            BadTutor = Content.Load<Texture2D>("(b)bad_tutor_pickup");
            
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
@@ -113,6 +115,7 @@ namespace TestGame
             hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)a+_pickup"), new Rectangle(2010, 790, 150, 150));
             hurdle2 = new Hurdles(Content.Load<Texture2D>("(b)f_pickup"), new Rectangle(3800, 650, 150, 150));
             hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
+            hurdle4 = new Hurdles(Content.Load<Texture2D>("(b)bad_tutor_pickup"), new Rectangle(2000, 650, 150, 150));
 
 
 
@@ -183,7 +186,11 @@ namespace TestGame
             }
             if (hurdle2.rectangle.X + 2000 <= 0)
             {
-                hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
+                hurdle2.rectangle.X = hurdle4.rectangle.X + 2000;
+            }
+            if (hurdle4.rectangle.X + 2000 <= 0)
+            {
+                hurdle4.rectangle.X = hurdle1.rectangle.X + 2000;
             }
 
 
@@ -194,7 +201,8 @@ namespace TestGame
             backGround3.Update();
             hurdle1.Update();
             hurdle2.Update();
-            hurdle3.Update(); ;
+            hurdle3.Update();
+            hurdle4.Update();
            
            base.Update(gameTime);
 
@@ -225,8 +233,9 @@ namespace TestGame
             hurdle1.Drow(spriteBatch);
             hurdle2.Drow(spriteBatch);
             hurdle3.Drow(spriteBatch);
+            hurdle4.Drow(spriteBatch);
             spriteBatch.End();
-
+            
             
 
             base.Draw(gameTime);
@@ -234,7 +243,7 @@ namespace TestGame
 
         public void Collition()
         {
-            if (runner.rectangle.Intersects(hurdle1.rectangle))
+            if (runner.rectangle.Intersects(BadTutorRec))
             {
               
             }
@@ -242,12 +251,13 @@ namespace TestGame
 
         private void checkBoundries()
         {
-            if (runner.position.X >= hurdle1.rectangle.X)
-                hurdle1.rectangle.Offset(5, 8);
-
-            else if (runner.position.Y >= hurdle1.rectangle.Y)
-                hurdle1.rectangle.Offset(5, 8);
-            hurdle1.Update();
+            if (runner.position.X >= BadTutorRec.X)
+            {
+                BadTutorRec.Offset(5,8);
+            }
+            else if (runner.position.Y >= BadTutorRec.Y)
+                BadTutorRec.Offset(5, 8);
+         
         }
     }
 }
