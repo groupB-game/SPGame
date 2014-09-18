@@ -239,5 +239,15 @@ namespace TestGame
               
             }
         }
+
+        private void checkBoundries()
+        {
+            if (runner.position.X >= hurdle1.rectangle.X)
+                hurdle1.rectangle.Offset(5, 8);
+
+            else if (runner.position.Y >= hurdle1.rectangle.Y)
+                hurdle1.rectangle.Offset(5, 8);
+            hurdle1.Update();
+        }
     }
 }
