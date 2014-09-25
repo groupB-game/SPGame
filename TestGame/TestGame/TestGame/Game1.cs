@@ -465,5 +465,11 @@ namespace TestGame
         {
 
         }
+
+        public void collision()
+        {
+            
+        }
     }
+
 }
