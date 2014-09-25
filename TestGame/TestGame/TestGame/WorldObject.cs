@@ -10,26 +10,38 @@ namespace TestGame
 {
     struct WorldObject
     {
-        public Vector3 position;
-        public Vector3 velocity;
-        public Model model;
-        public Texture2D texture2D;
-        public Vector3 lastPosition;
-
-        public void MoveForward()
+        public Texture2D texture;
+        public Vector2 position;
+        public Vector2 velocity;
+        
+        public Rectangle BoundingBox
         {
-            lastPosition = position;
-            position += velocity;
+            get
+            {
+                return new Rectangle(
+                    (int)position.X,
+                    (int)position.Y,
+                    texture.Width,
+                    texture.Height);
+            }
+        }       
+
+        public WorldObject(Texture2D texture, Vector2 position, Vector2 velocity)
+        {
+            this.texture = texture;
+            this.position = position;
+            this.velocity = velocity;
+        }
+        public WorldObject(Texture2D texture, Vector2 position)
+        {
+            this.texture = texture;
+            this.position = position;
+            velocity = new Vector2(0, 0);
         }
 
-        public void Backup()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            position -= velocity;
-        }
-
-        public void ReverseVelocity()
-        {
-            velocity.X = -velocity.X;
+            spriteBatch.Draw(texture, position, Color.White);
         }
     }
 }
