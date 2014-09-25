@@ -80,6 +80,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="SaveGame.cs" />
     <Compile Include="ScrollingPath.cs" />
+    <Compile Include="WorldObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
