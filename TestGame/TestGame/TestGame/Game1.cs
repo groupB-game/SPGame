@@ -28,6 +28,8 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        int count = 0;
+
         //MassageBox
        
        
@@ -59,7 +61,7 @@ namespace TestGame
 
         //Scrolling Path
         private ScrollingPath scrolling1,scrolling2;
-        private BackGround backGround1, backGround2;
+        private BackGround backGround1, backGround2, backGround3, backGround4, backGround5;
 
         //Screen parameters
         int screenWidth;
@@ -130,10 +132,13 @@ namespace TestGame
             font = Content.Load<SpriteFont>("ScoreFont/Score");
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
-            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150)); 
+            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
-            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(1920, 0, 2000, 1080));
-           
+            backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
+            backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(4000, 0, 2000, 1080));
+            backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(6000, 0, 2000, 1080));
+            backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(8000, 0, 2000, 1080));
+
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
             //backGroundBox = new Rectangle(0, 0, 2000, 1080);
@@ -224,17 +229,39 @@ namespace TestGame
                 
                 //runner 
                 runner.Update(gameTime);
+                count++;
+                if (count == 500)
+                {
+                    int cframe = runner.currentFrame;
+                    float ypos = runner.position.Y;
+                    float xpos = runner.position.X;
+
+                    runner = new Animation(Content.Load<Texture2D>("RunnerWHat"), new Vector2(xpos, ypos), 330, 288);
+                    runner.currentFrame = cframe;
+                }
 
                 //Scrolling path
 
 
-                if (scrolling1.rectangle.X + 1920 <= 0)
+                if (backGround1.rectangle.X + 2000 <= 0)
                 {
-                    scrolling1.rectangle.X = scrolling2.rectangle.X + 1920;
+                    backGround1.rectangle.X = backGround2.rectangle.X + 2000;
                 }
-                if (scrolling2.rectangle.X + 1920 <= 0)
+                if (backGround2.rectangle.X + 2000 <= 0)
                 {
-                    scrolling2.rectangle.X = scrolling1.rectangle.X + 1920;
+                    backGround2.rectangle.X = backGround3.rectangle.X + 2000;
+                }
+                if (backGround3.rectangle.X + 2000 <= 0)
+                {
+                    backGround3.rectangle.X = backGround4.rectangle.X + 2000;
+                }
+                if (backGround4.rectangle.X + 2000 <= 0)
+                {
+                    backGround4.rectangle.X = backGround5.rectangle.X + 2000;
+                }
+                if (backGround5.rectangle.X + 2000 <= 0)
+                {
+                    backGround5.rectangle.X = backGround4.rectangle.X + 2000;
                 }
 
                 //Scrolling Background
@@ -266,6 +293,9 @@ namespace TestGame
                 scrolling2.Update();
                 backGround1.Update();
                 backGround2.Update();
+                backGround3.Update();
+                backGround4.Update();
+                backGround5.Update();
                 //hurdle1.Update();
                // hurdle2.Update();
                 ScoreUpadate(gameTime);
@@ -319,6 +349,9 @@ namespace TestGame
             {
                 backGround1.Drow(spriteBatch);
                 backGround2.Drow(spriteBatch);
+                backGround3.Drow(spriteBatch);
+                backGround4.Drow(spriteBatch);
+                backGround5.Drow(spriteBatch);
                 scrolling1.Drow(spriteBatch);
                 scrolling2.Drow(spriteBatch);
                 spriteBatch.Draw(pushButton, new Vector2(0, 0), Color.White);
