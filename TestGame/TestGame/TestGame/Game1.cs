@@ -20,13 +20,13 @@ namespace TestGame
         SpriteBatch spriteBatch;
         Texture2D BadTutor;
         Rectangle BadTutorRec;
-        Texture2D ball,backGround;
+        Texture2D ball, backGround;
         Animation runner;
 
         int count = 0;
 
         //Scrolling Path
-        private ScrollingPath scrolling1,scrolling2;
+        private ScrollingPath scrolling1, scrolling2;
         private BackGround backGround1, backGround2, backGround3, backGround4, backGround5;
 
         //Screen parameters
@@ -36,13 +36,13 @@ namespace TestGame
         Vector2 velocity;
 
         Rectangle ballbox;
-        Rectangle runnerBox,backGroundBox;
+        Rectangle runnerBox, backGroundBox;
         Random randomNumber;
 
         //Hurdles
         private Hurdles hurdle1, hurdle2, hurdle3;
 
-        
+
 
         public Game1()
         {
@@ -90,7 +90,7 @@ namespace TestGame
             ballbox = new Rectangle(10, 10, 30, 30);
 
             //Scrolling path
-            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
+            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
@@ -98,12 +98,12 @@ namespace TestGame
             backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(6000, 0, 2000, 1080));
             backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(8000, 0, 2000, 1080));
 
-           
+
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
             //backGroundBox = new Rectangle(0, 0, 2000, 1080);
-            
-            
+
+
 
             velocity.X = 3f;
             velocity.Y = 3f;
@@ -185,7 +185,7 @@ namespace TestGame
             //runner 
             runner.Update(gameTime);
             count++;
-            if(count == 500)
+            if (count == 500)
             {
                 int cframe = runner.currentFrame;
                 float ypos = runner.position.Y;
@@ -250,11 +250,11 @@ namespace TestGame
             backGround5.Update();
             hurdle1.Update();
             hurdle2.Update();
-            hurdle3.Update(); 
-           
-           base.Update(gameTime);
+            hurdle3.Update();
 
-            
+            base.Update(gameTime);
+
+
 
         }
 
@@ -269,8 +269,8 @@ namespace TestGame
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-             //spriteBatch.Draw(ball, ballbox, Color.White);
-           //spriteBatch.Draw(backGround ,backGroundBox ,Color.White );
+            //spriteBatch.Draw(ball, ballbox, Color.White);
+            //spriteBatch.Draw(backGround ,backGroundBox ,Color.White );
             backGround1.Drow(spriteBatch);
             backGround2.Drow(spriteBatch);
             backGround3.Drow(spriteBatch);
@@ -284,27 +284,12 @@ namespace TestGame
             hurdle3.Drow(spriteBatch);
             spriteBatch.End();
 
-            
+
 
             base.Draw(gameTime);
-        }
-
-        public void Collition()
-        {
-            if (runner.rectangle.Intersects(hurdle1.rectangle))
-            {
-              
-            }
-        }
-
-        private void checkBoundries()
-        {
-            if (runner.position.X >= hurdle1.rectangle.X)
-                hurdle1.rectangle.Offset(5, 8);
-
-            else if (runner.position.Y >= hurdle1.rectangle.Y)
-                hurdle1.rectangle.Offset(5, 8);
-            hurdle1.Update();
+           
         }
     }
+    
 }
+      
