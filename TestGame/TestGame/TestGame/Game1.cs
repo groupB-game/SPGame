@@ -27,6 +27,27 @@ namespace TestGame
         }
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        //Score
+        private int score = 0;
+        private SpriteFont font;
+        float timer;
+        int interval = 100;
+        Texture2D startButton;
+        Texture2D exitButton;
+        Texture2D resumeButton;
+        Vector2 startButtonPosition;
+        Vector2 exitButtonPosition;
+        Vector2 resumeButtonPosition;
+        Texture2D loadingScreen;
+        Boolean isLoading = false;
+        MouseState mouseState;
+        MouseState previousMouseState;
+        Texture2D pushButton;
+        
+
+        //Game state initialize
+        private GameState gameState;
+        private Thread backgroundThread;
 
 
         Texture2D ball,backGround;
@@ -125,7 +146,7 @@ namespace TestGame
             for (int i = 0; i < 20; i++)
             {
                 randomNumber = new Random();
-                int newrandom = randomNumber.Next(0, 19);
+                int neWrandom = randomNumber.Next(0, 19);
                 var hurdlepickup = new List<string>
                 {
                     "(b)bad_tutor_pickup",
@@ -152,10 +173,11 @@ namespace TestGame
 
                 //while (hurdlepickup.Count>0)
                 //{
-                    hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(2010, 790, 150, 150));
-                    hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(3800, 650, 150, 150));
+                    hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(2010, 790, 150, 150));
+                    hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(3800, 650, 150, 150));
 
 
+        }
         }
 
         /// <summary>
@@ -294,6 +316,7 @@ namespace TestGame
             
 
         }
+        }
 
         public void ScoreUpadate(GameTime gameTime)
         {
@@ -329,22 +352,23 @@ namespace TestGame
             }
             if (gameState == GameState.Playing)
             {
-            backGround1.Drow(spriteBatch);
-            backGround2.Drow(spriteBatch);
-            backGround3.Drow(spriteBatch);
-            backGround4.Drow(spriteBatch);
-            backGround5.Drow(spriteBatch);
-            scrolling1.Drow(spriteBatch);
-            scrolling2.Drow(spriteBatch);
+                backGround1.Drow(spriteBatch);
+                backGround2.Drow(spriteBatch);
+                backGround3.Drow(spriteBatch);
+                backGround4.Drow(spriteBatch);
+                backGround5.Drow(spriteBatch);
+                scrolling1.Drow(spriteBatch);
+                scrolling2.Drow(spriteBatch);
                 spriteBatch.Draw(pushButton, new Vector2(0, 0), Color.White);
-            runner.Draw(spriteBatch);
-            hurdle1.Drow(spriteBatch);
-            hurdle2.Drow(spriteBatch);
-            spriteBatch.End();
+                runner.Draw(spriteBatch);
+                hurdle1.Drow(spriteBatch);
+                hurdle2.Drow(spriteBatch);
+                spriteBatch.End();
 
-            
 
-            base.Draw(gameTime);
+
+                base.Draw(gameTime);
+            }
         }
 
 
