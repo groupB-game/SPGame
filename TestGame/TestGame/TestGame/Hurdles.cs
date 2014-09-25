@@ -28,5 +28,5 @@ namespace TestGame
             spriteBatch.Draw(texture, rectangle, Color.White);
         }
     }
-    }
+}
 
