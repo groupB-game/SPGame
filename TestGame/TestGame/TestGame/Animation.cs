@@ -16,7 +16,7 @@ namespace TestGame
         Vector2 origin;
         public Vector2 velocity;
 
-        int currentFrame;
+        public int currentFrame;
         int frameHeight;
         int frameWidth;
 
@@ -36,7 +36,7 @@ namespace TestGame
 
         public void Update(GameTime gameTime)
         {
-            rectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameWidth);
+            rectangle = new Rectangle(currentFrame * frameWidth, 0, frameWidth, frameHeight);
             origin = new Vector2(rectangle.Width / 2, rectangle.Height / 2);
             position = position + velocity;
 
@@ -87,6 +87,9 @@ namespace TestGame
             
 
         }
+
+        
+
 
         //Collision
 
