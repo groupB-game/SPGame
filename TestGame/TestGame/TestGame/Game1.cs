@@ -173,8 +173,8 @@ namespace TestGame
 
                 //while (hurdlepickup.Count>0)
                 //{
-                    hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(2010, 790, 150, 150));
-                    hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(3800, 650, 150, 150));
+                    //hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(2010, 790, 150, 150));
+                   // hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(3800, 650, 150, 150));
 
 
         }
