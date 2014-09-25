@@ -155,7 +155,7 @@ namespace TestGame
                     hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(2010, 790, 150, 150));
                     hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(3800, 650, 150, 150));
 
-
+            }
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace TestGame
 
             
 
-        }
+        }}
 
         public void ScoreUpadate(GameTime gameTime)
         {
@@ -329,22 +329,23 @@ namespace TestGame
             }
             if (gameState == GameState.Playing)
             {
-            backGround1.Drow(spriteBatch);
-            backGround2.Drow(spriteBatch);
-            backGround3.Drow(spriteBatch);
-            backGround4.Drow(spriteBatch);
-            backGround5.Drow(spriteBatch);
-            scrolling1.Drow(spriteBatch);
-            scrolling2.Drow(spriteBatch);
+                backGround1.Drow(spriteBatch);
+                backGround2.Drow(spriteBatch);
+                backGround3.Drow(spriteBatch);
+                backGround4.Drow(spriteBatch);
+                backGround5.Drow(spriteBatch);
+                scrolling1.Drow(spriteBatch);
+                scrolling2.Drow(spriteBatch);
                 spriteBatch.Draw(pushButton, new Vector2(0, 0), Color.White);
-            runner.Draw(spriteBatch);
-            hurdle1.Drow(spriteBatch);
-            hurdle2.Drow(spriteBatch);
-            spriteBatch.End();
+                runner.Draw(spriteBatch);
+                hurdle1.Drow(spriteBatch);
+                hurdle2.Drow(spriteBatch);
+                spriteBatch.End();
 
-            
 
-            base.Draw(gameTime);
+
+                base.Draw(gameTime);
+            }
         }
 
 
