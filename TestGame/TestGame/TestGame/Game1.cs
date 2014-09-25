@@ -187,7 +187,7 @@ namespace TestGame
             //runner 
             runner.Update(gameTime);
             count++;
-            if(count == 500)
+            if(count == 1100)
             {
                 int cframe = runner.currentFrame;
                 float ypos = runner.position.Y;
