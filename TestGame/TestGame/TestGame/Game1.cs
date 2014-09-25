@@ -501,7 +501,7 @@ namespace TestGame
                 {
                     Exit();
             }
-        }
+            }
 
 
         public void LoadGame()
@@ -525,7 +525,7 @@ namespace TestGame
                     gameState = GameState.Playing;
                 }
             }
-        }
+}
 
         public void SaveHighScore()
         {
