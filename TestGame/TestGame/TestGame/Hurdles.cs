@@ -11,6 +11,7 @@ namespace TestGame
     {
         public Texture2D  texture;
         public Rectangle rectangle;
+        public List<string> hurdlepickup;
 
         public Hurdles(Texture2D newTexture, Rectangle newRectangle)
         {
@@ -28,5 +29,5 @@ namespace TestGame
             spriteBatch.Draw(texture, rectangle, Color.White);
         }
     }
-    }
+}
 

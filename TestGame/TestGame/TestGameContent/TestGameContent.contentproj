@@ -121,102 +121,102 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="%28b%29bad_tutor_pickup.png">
+    <Compile Include="Pickups\%28b%29bad_tutor_pickup.png">
       <Name>%28b%29bad_tutor_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29flash_drive_pickup.png">
+    <Compile Include="Pickups\%28b%29flash_drive_pickup.png">
       <Name>%28b%29flash_drive_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29flu_pickup.png">
+    <Compile Include="Pickups\%28b%29flu_pickup.png">
       <Name>%28b%29flu_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29forgot_due_date_pickup.png">
+    <Compile Include="Pickups\%28b%29forgot_due_date_pickup.png">
       <Name>%28b%29forgot_due_date_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29f_pickup.png">
+    <Compile Include="Pickups\%28b%29f_pickup.png">
       <Name>%28b%29f_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29goals_missed_pickup.png">
+    <Compile Include="Pickups\%28b%29goals_missed_pickup.png">
       <Name>%28b%29goals_missed_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29missed_alarm_pickup.png">
+    <Compile Include="Pickups\%28b%29missed_alarm_pickup.png">
       <Name>%28b%29missed_alarm_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29moodle_down_pickup.png">
+    <Compile Include="Pickups\%28b%29moodle_down_pickup.png">
       <Name>%28b%29moodle_down_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29not_enough_sleep_pickup.png">
+    <Compile Include="Pickups\%28b%29not_enough_sleep_pickup.png">
       <Name>%28b%29not_enough_sleep_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28b%29repeat_paper_pickup.png">
+    <Compile Include="Pickups\%28b%29repeat_paper_pickup.png">
       <Name>%28b%29repeat_paper_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29a+_pickup.png">
+    <Compile Include="Pickups\%28g%29a+_pickup.png">
       <Name>%28g%29a+_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29goals_met_pickup.png">
+    <Compile Include="Pickups\%28g%29goals_met_pickup.png">
       <Name>%28g%29goals_met_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29good_health_pickup.png">
+    <Compile Include="Pickups\%28g%29good_health_pickup.png">
       <Name>%28g%29good_health_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29good_sleep_pickup.png">
+    <Compile Include="Pickups\%28g%29good_sleep_pickup.png">
       <Name>%28g%29good_sleep_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29good_tutor_pickup.png">
+    <Compile Include="Pickups\%28g%29good_tutor_pickup.png">
       <Name>%28g%29good_tutor_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29new_skills_pickup.png">
+    <Compile Include="Pickups\%28g%29new_skills_pickup.png">
       <Name>%28g%29new_skills_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29notes_taken_pickup.png">
+    <Compile Include="Pickups\%28g%29notes_taken_pickup.png">
       <Name>%28g%29notes_taken_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29on_time_pickup.png">
+    <Compile Include="Pickups\%28g%29on_time_pickup.png">
       <Name>%28g%29on_time_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29passed_paper_pickup.png">
+    <Compile Include="Pickups\%28g%29passed_paper_pickup.png">
       <Name>%28g%29passed_paper_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="%28g%29study_time_pickup.png">
+    <Compile Include="Pickups\%28g%29study_time_pickup.png">
       <Name>%28g%29study_time_pickup</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -262,6 +262,83 @@
       <Name>WorkBG2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\start.png">
+      <Name>start</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\exit.png">
+      <Name>exit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\resume.png">
+      <Name>resume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\pause.png">
+      <Name>pause</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\loading.png">
+      <Name>loading</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\start.png">
+      <Name>start</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\exit.png">
+      <Name>exit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\resume.png">
+      <Name>resume</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\pause.png">
+      <Name>pause</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\loading.png">
+      <Name>loading</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ScoreFont\Score.spritefont">
+      <Name>Score</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
