@@ -147,6 +147,9 @@ namespace TestGame
             screeHeight = GraphicsDevice.Viewport.Height;
 
             //Hurdles load
+            
+			
+            
 
             //hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
             //hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 650, 150, 150));
