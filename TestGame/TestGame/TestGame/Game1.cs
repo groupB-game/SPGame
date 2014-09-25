@@ -249,14 +249,14 @@ namespace TestGame
                 }
 
                 //Hurdle looping
-                if (hurdle1.rectangle.X + 2000 <= 0)
-                {
-                    hurdle1.rectangle.X = hurdle2.rectangle.X + 2000;
-                }
-                if (hurdle2.rectangle.X + 2000 <= 0)
-                {
-                    hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
-                }
+                //if (hurdle1.rectangle.X + 2000 <= 0)
+                //{
+                //    hurdle1.rectangle.X = hurdle2.rectangle.X + 2000;
+                //}
+                //if (hurdle2.rectangle.X + 2000 <= 0)
+                //{
+                //    hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
+                //}
 
 
 
@@ -266,8 +266,8 @@ namespace TestGame
                 scrolling2.Update();
                 backGround1.Update();
                 backGround2.Update();
-                hurdle1.Update();
-                hurdle2.Update();
+                //hurdle1.Update();
+               // hurdle2.Update();
                 ScoreUpadate(gameTime);
                 isLoading = false;
             }
@@ -323,8 +323,8 @@ namespace TestGame
                 scrolling2.Drow(spriteBatch);
                 spriteBatch.Draw(pushButton, new Vector2(0, 0), Color.White);
                 runner.Draw(spriteBatch);
-                hurdle1.Drow(spriteBatch);
-                hurdle2.Drow(spriteBatch);
+                //hurdle1.Drow(spriteBatch);
+               // hurdle2.Drow(spriteBatch);
                 spriteBatch.DrawString(font, "Score: " + score, new Vector2(1700, 10), Color.White);
                 if (score > 20)
                 {
