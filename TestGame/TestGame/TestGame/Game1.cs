@@ -70,7 +70,7 @@ namespace TestGame
         Vector2 velocity;
 
         Rectangle ballbox;
-        Rectangle runnerBox,backGroundBox;
+        Rectangle runnerBox, backGroundBox;
         Random randomNumber;
 
         //Hurdles
@@ -131,14 +131,14 @@ namespace TestGame
             //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
             //Scrolling path
-            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
-            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
+            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
+            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150)); 
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
             backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(4000, 0, 2000, 1080));
             backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(6000, 0, 2000, 1080));
             backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(8000, 0, 2000, 1080));
-
+           
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
             //backGroundBox = new Rectangle(0, 0, 2000, 1080);
@@ -204,8 +204,10 @@ namespace TestGame
                
             }
 
-            //load the game when needed
-            if (gameState == GameState.Loading && !isLoading) //isLoading bool is to prevent the LoadGame method from being called 60 times a seconds
+            //runner 
+            runner.Update(gameTime);
+            count++;
+            if(count == 500)
             {
                 //set backgroundthread
                 
@@ -378,12 +380,9 @@ namespace TestGame
             base.Draw(gameTime);
         }
 
-
-        public void MouseClick(int X, int Y)
+        public void Collition()
         {
-            Rectangle mouseClickRect = new Rectangle(X, Y, 10, 10);
-            //check the startmenu
-            if (gameState == GameState.StartMenu)
+            if (runner.rectangle.Intersects(hurdle1.rectangle))
             {
                 Rectangle startButtonRect = new Rectangle((int)startButtonPosition.X, (int)startButtonPosition.Y, 100, 20);
                 Rectangle exitButtonRect = new Rectangle((int)exitButtonPosition.X, (int)exitButtonPosition.Y, 100, 20);
@@ -399,8 +398,7 @@ namespace TestGame
                 }
             }
 
-            //check the pausebutton
-            if (gameState == GameState.Playing)
+        private void checkBoundries()
             {
                 Rectangle pauseButtonRect = new Rectangle(0, 0, 70, 70);
 
@@ -462,6 +460,9 @@ namespace TestGame
         public void LoadGame()
         {
 
+            else if (runner.position.Y >= hurdle1.rectangle.Y)
+                hurdle1.rectangle.Offset(5, 8);
+            hurdle1.Update();
         }
     }
 }
