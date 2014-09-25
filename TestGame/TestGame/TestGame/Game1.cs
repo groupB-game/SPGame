@@ -177,7 +177,7 @@ namespace TestGame
                    // hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[neWrandom]), new Rectangle(3800, 650, 150, 150));
 
 
-        }
+            }
         }
 
         /// <summary>
