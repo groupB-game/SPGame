@@ -61,7 +61,7 @@ namespace TestGame
 
         //Scrolling Path
         private ScrollingPath scrolling1,scrolling2;
-        private BackGround backGround1, backGround2, backGround3, backGround4, backGround5;
+        private BackGround backGround1, backGround2;
 
         //Screen parameters
         int screenWidth;
@@ -70,7 +70,7 @@ namespace TestGame
         Vector2 velocity;
 
         Rectangle ballbox;
-        Rectangle runnerBox, backGroundBox;
+        Rectangle runnerBox,backGroundBox;
         Random randomNumber;
 
         //Hurdles
@@ -120,7 +120,7 @@ namespace TestGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Random number generator
-            
+
 
 
             // TODO: use this.Content to load your game content here
@@ -131,14 +131,14 @@ namespace TestGame
             //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
             //Scrolling path
-            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
-            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150)); 
+            scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0,930,1920,150));
+            scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
             backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(4000, 0, 2000, 1080));
             backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(6000, 0, 2000, 1080));
             backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(8000, 0, 2000, 1080));
-           
+
             //Stady background
             //backGround = Content.Load<Texture2D>("LabBGNew");
             //backGroundBox = new Rectangle(0, 0, 2000, 1080);
@@ -152,9 +152,44 @@ namespace TestGame
             screeHeight = GraphicsDevice.Viewport.Height;
 
             //Hurdles load
-            
-			
-            
+            for (int i = 0; i < 20; i++)
+            {
+                randomNumber = new Random();
+                int newrandom = randomNumber.Next(0, 19);
+                var hurdlepickup = new List<string>
+                {
+                    "Pickups/(b)bad_tutor_pickup",
+                    "Pickups/(b)f_pickup",
+                    "Pickups/(b)flash_drive_pickup",
+                    "Pickups/(b)flu_pickup",
+                    "Pickups/(b)forgot_due_date_pickup",
+                    "Pickups/(b)goals_missed_pickup",
+                    "Pickups/(b)missed_alarm_pickup",
+                    "Pickups/(b)moodle_down_pickup",
+                    "Pickups/(b)not_enough_sleep_pickup",
+                    "Pickups/(b)repeat_paper_pickup",
+                    "Pickups/(g)a+_pickup",
+                    "Pickups/(g)goals_met_pickup",
+                    "Pickups/(g)good_health_pickup",
+                    "Pickups/(g)good_sleep_pickup",
+                    "Pickups/(g)good_tutor_pickup",
+                    "Pickups/(g)new_skills_pickup",
+                    "Pickups/(g)notes_taken_pickup",
+                    "Pickups/(g)on_time_pickup",
+                    "Pickups/(g)passed_paper_pickup",
+                    "Pickups/(g)study_time_pickup"
+                };
+
+                //while (hurdlepickup.Count>0)
+                //{
+                hurdle1 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(2010, 790, 150, 150));
+                hurdle2 = new Hurdles(Content.Load<Texture2D>(hurdlepickup[newrandom]), new Rectangle(3800, 650, 150, 150));
+
+                //hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
+                //}
+            }
+
+
 
             //hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
             //hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 650, 150, 150));
@@ -204,13 +239,11 @@ namespace TestGame
                
             }
 
-            //runner 
-            runner.Update(gameTime);
-            count++;
-            if(count == 500)
+            //load the game when needed
+            if (gameState == GameState.Loading && !isLoading) //isLoading bool is to prevent the LoadGame method from being called 60 times a seconds
             {
                 //set backgroundthread
-                
+
                 isLoading = true;
 
                 //start backgroundthread
@@ -242,17 +275,17 @@ namespace TestGame
                     runner.currentFrame = cframe;
                 }
 
-                //Scrolling path
+            //Scrolling path
 
 
                 if (backGround1.rectangle.X + 2000 <= 0)
-                {
+            {
                     backGround1.rectangle.X = backGround2.rectangle.X + 2000;
-                }
+            }
                 if (backGround2.rectangle.X + 2000 <= 0)
-                {
+            {
                     backGround2.rectangle.X = backGround3.rectangle.X + 2000;
-                }
+            }
                 if (backGround3.rectangle.X + 2000 <= 0)
                 {
                     backGround3.rectangle.X = backGround4.rectangle.X + 2000;
@@ -266,35 +299,35 @@ namespace TestGame
                     backGround5.rectangle.X = backGround4.rectangle.X + 2000;
                 }
 
-                //Scrolling Background
+            //Scrolling Background
 
-                if (backGround1.rectangle.X + 2000 <= 0)
-                {
-                    backGround1.rectangle.X = backGround2.rectangle.X + 2000;
-                }
-                if (backGround2.rectangle.X + 2000 <= 0)
-                {
+            if (backGround1.rectangle.X + 2000 <= 0)
+            {
+                backGround1.rectangle.X = backGround2.rectangle.X + 2000;
+            }
+            if (backGround2.rectangle.X + 2000 <= 0)
+            {
                     backGround2.rectangle.X = backGround1.rectangle.X + 2000;
+            }
+
+            //Hurdle looping
+                if (hurdle1.rectangle.X + 2000 <= 0)
+                {
+                    hurdle1.rectangle.X = hurdle2.rectangle.X + 2000;
+                }
+                if (hurdle2.rectangle.X + 2000 <= 0)
+                {
+                    hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
                 }
 
-                //Hurdle looping
-                //if (hurdle1.rectangle.X + 2000 <= 0)
-                //{
-                //    hurdle1.rectangle.X = hurdle2.rectangle.X + 2000;
-                //}
-                //if (hurdle2.rectangle.X + 2000 <= 0)
-                //{
-                //    hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
-                //}
 
 
 
 
-
-                scrolling1.Update();
-                scrolling2.Update();
-                backGround1.Update();
-                backGround2.Update();
+            scrolling1.Update();
+            scrolling2.Update();
+            backGround1.Update();
+            backGround2.Update();
                 backGround3.Update();
                 backGround4.Update();
                 backGround5.Update();
@@ -314,7 +347,7 @@ namespace TestGame
             
 
         }
-
+            
         public void ScoreUpadate(GameTime gameTime)
         {
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
@@ -323,7 +356,7 @@ namespace TestGame
                 timer = 0;
                 score++;
             }
-            
+
         }
 
 
@@ -358,8 +391,8 @@ namespace TestGame
                 scrolling2.Drow(spriteBatch);
                 spriteBatch.Draw(pushButton, new Vector2(0, 0), Color.White);
                 runner.Draw(spriteBatch);
-                //hurdle1.Drow(spriteBatch);
-               // hurdle2.Drow(spriteBatch);
+                hurdle1.Drow(spriteBatch);
+                hurdle2.Drow(spriteBatch);
                 spriteBatch.DrawString(font, "Score: " + score, new Vector2(1700, 10), Color.White);
                 if (score > 20)
                 {
@@ -371,18 +404,21 @@ namespace TestGame
                 spriteBatch.Draw(resumeButton, resumeButtonPosition, Color.White);
             }
 
-            
-            
+
+
             spriteBatch.End();
 
-            
+
 
             base.Draw(gameTime);
         }
 
-        public void Collition()
+
+        public void MouseClick(int X, int Y)
         {
-            if (runner.rectangle.Intersects(hurdle1.rectangle))
+            Rectangle mouseClickRect = new Rectangle(X, Y, 10, 10);
+            //check the startmenu
+            if (gameState == GameState.StartMenu)
             {
                 Rectangle startButtonRect = new Rectangle((int)startButtonPosition.X, (int)startButtonPosition.Y, 100, 20);
                 Rectangle exitButtonRect = new Rectangle((int)exitButtonPosition.X, (int)exitButtonPosition.Y, 100, 20);
@@ -398,8 +434,78 @@ namespace TestGame
                 }
             }
 
-        private void checkBoundries()
+            //check the pausebutton
+            if (gameState == GameState.Playing)
             {
+                Rectangle pauseButtonRect = new Rectangle(0, 0, 70, 70);
+
+                if (mouseClickRect.Intersects(pauseButtonRect))
+                {
+                    gameState = GameState.Paused;
+                }
+
+                isLoading = false;
+            }
+
+            if (gameState == GameState.Paused)
+            {
+                Rectangle resumeButtonRect = new Rectangle((int)resumeButtonPosition.X , (int)resumeButtonPosition.Y, 100, 20);
+
+                if (mouseClickRect.Intersects(resumeButtonRect))
+                {
+                    gameState = GameState.Playing;
+                }
+            }
+        }
+
+        public void SaveHighScore()
+        {
+            try
+            {
+                StreamWriter writer = new StreamWriter("c:\\saveHighScare.txt");
+                writer.WriteLine(score);
+                writer.Close();
+                
+              
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public void ReadHighScore()
+        {
+            try
+        {
+                StreamReader readHig = new StreamReader("c:\\saveHighScare.txt");
+                string read = readHig.ReadLine();
+                string[] split = read.Split('-');
+                
+
+                
+
+
+            }
+            catch (Exception e)
+            {
+                Rectangle startButtonRect = new Rectangle((int)startButtonPosition.X, (int)startButtonPosition.Y, 100, 20);
+                Rectangle exitButtonRect = new Rectangle((int)exitButtonPosition.X, (int)exitButtonPosition.Y, 100, 20);
+              
+                if (mouseClickRect.Intersects(startButtonRect)) //player clicked start button
+                {
+                    gameState = GameState.Playing;
+                    isLoading = false;
+                }
+                else if (mouseClickRect.Intersects(exitButtonRect)) //player clicked exit button
+                {
+                    Exit();
+            }
+        }
+
+
+        public void LoadGame()
+        {
                 Rectangle pauseButtonRect = new Rectangle(0, 0, 70, 70);
 
                 if (mouseClickRect.Intersects(pauseButtonRect))
@@ -460,9 +566,6 @@ namespace TestGame
         public void LoadGame()
         {
 
-            else if (runner.position.Y >= hurdle1.rectangle.Y)
-                hurdle1.rectangle.Offset(5, 8);
-            hurdle1.Update();
         }
     }
 }
