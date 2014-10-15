@@ -9,10 +9,6 @@ using System.IO.IsolatedStorage;
 
 namespace TestGame
 {
-    [Serializable]
-    public struct HighScoreData:IDisposable
-    {
-        
-
-    }
+   
+    
 }
