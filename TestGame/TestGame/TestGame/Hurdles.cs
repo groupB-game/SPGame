@@ -11,7 +11,6 @@ namespace TestGame
     {
         public Texture2D  texture;
         public Rectangle rectangle;
-        public List<Hurdles> hurdlepickuplist;
 
         public Hurdles(Texture2D newTexture, Rectangle newRectangle)
         {
