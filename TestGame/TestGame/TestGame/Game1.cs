@@ -77,7 +77,8 @@ namespace TestGame
         //Hurdles
         private Hurdles hurdle1, hurdle2;
 
-
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern uint MessageBox(IntPtr hWnd, String text, String caption, uint type);
 
         public Game1()
         {
@@ -108,6 +109,8 @@ namespace TestGame
 
             mouseState = Mouse.GetState();
             previousMouseState = mouseState;
+
+  
 
             base.Initialize();
         }
@@ -226,6 +229,7 @@ namespace TestGame
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
@@ -244,9 +248,12 @@ namespace TestGame
             //score++;
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
+                //MessageBox(new IntPtr(0), "Do you want to Exit?", "Alert", 0);
+                
                 int Score = score;
                 if (Int32.Parse(ReadHighScore()) < score)
                 {
+                    
                     SaveHighScore(score);
                 }
                 this.Exit();
@@ -427,6 +434,8 @@ namespace TestGame
                
                 
             }
+
+            
 
 
 
