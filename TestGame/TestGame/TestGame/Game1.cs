@@ -72,13 +72,7 @@ namespace TestGame
         Rectangle backGroundBox;
 
         //Collision detection
-       // Texture2D hurdle1Texture;
-       // Texture2D runnerTexture;
-       // Rectangle hurdleBox;
-       // Rectangle runnerBox;
-       // Vector2 runnerPosition;
-       // Vector2 boxPosition;
-       // Vector2 boxVelocity;
+        //List<Hurdles> hurdleList;
 
 
         Random randomNumber;
@@ -118,9 +112,6 @@ namespace TestGame
             mouseState = Mouse.GetState();
             previousMouseState = mouseState;
 
-           // boxPosition = new Vector2(this.GraphicsDevice.Viewport.Width / 2, this.GraphicsDevice.Viewport.Height * 0.25f);
-          //  runnerPosition = new Vector2(this.GraphicsDevice.Viewport.Width / 2, this.GraphicsDevice.Viewport.Height * 0.75f);
-          //  boxVelocity = new Vector2(0, 1);
 
             base.Initialize();
         }
@@ -141,16 +132,7 @@ namespace TestGame
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
 
-            //ballbox = new Rectangle(10, 10, 30, 30);
-
-           // hurdle1Texture = Content.Load<Texture2D>("Pickups/(b)bad_tutor_pickup");
-           // runnerTexture = Content.Load<Texture2D>("RunnerWHat");
-
-          //  hurdleBox = new Rectangle((int)(boxPosition.X - hurdle1Texture.Width / 2), (int)(boxPosition.Y - hurdle1Texture.Height / 2), hurdle1Texture.Width, hurdle1Texture.Height);
-          //  runnerBox = new Rectangle((int)(boxPosition.X - hurdle1Texture.Width / 2), (int)(boxPosition.Y - hurdle1Texture.Height / 2), hurdle1Texture.Width, hurdle1Texture.Height);
-
-
-            //Load font 
+                //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
@@ -209,8 +191,8 @@ namespace TestGame
 
                 //while (hurdlepickup.Count>0)
                 //{
-                hurdle1 = new Hurdles(Content.Load<Texture2D>(item1), new Rectangle(2010, 790, 150, 150));
-                hurdle2 = new Hurdles(Content.Load<Texture2D>(item2), new Rectangle(3800, 650, 150, 150));
+                hurdle1 = new Hurdles(Content.Load<Texture2D>(item1));
+                hurdle2 = new Hurdles(Content.Load<Texture2D>(item2));
 
                 //hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
                 //}
@@ -311,7 +293,6 @@ namespace TestGame
 
                 //Scrolling path
 
-
                 if (scrolling1.rectangle.X + 1920 <= 0)
                 {
                     scrolling1.rectangle.X = scrolling2.rectangle.X + 1920;
@@ -355,22 +336,7 @@ namespace TestGame
                 }
 
                 //Collisions
-              //  if(hurdleBox.Intersects(runnerBox) || !GraphicsDevice.Viewport.Bounds.Contains(hurdleBox))
-             //   {
-              //      boxVelocity = -boxVelocity;
-             //       boxPosition += boxVelocity;
-             //   }
-             //   else
-             //   {
-             //       boxPosition += boxVelocity;
-             //   }
-
-                //Updates bounding boxes
-              //  hurdleBox.X = (int)boxPosition.X;
-               // hurdleBox.Y = (int)boxPosition.Y;
-
-               // runnerBox.X = (int)runnerPosition.X;
-               // runnerBox.Y = (int)runnerPosition.Y;
+                //HandleCollisions();
 
 
 
@@ -437,9 +403,7 @@ namespace TestGame
             }
             if (gameState == GameState.Playing)
             {
-               // spriteBatch.Draw(hurdle1Texture, boxPosition, Color.White);
-                //spriteBatch.Draw(runnerTexture, runnerPosition, Color.White);
-                
+                               
                 backGround1.Drow(spriteBatch);
                 backGround2.Drow(spriteBatch);
                 backGround3.Drow(spriteBatch);
@@ -561,5 +525,24 @@ namespace TestGame
         {
 
         }
+
+       // public void HandleCollisions()
+       // {
+       //     Hurdles toRemove = null;
+//
+         //   foreach(Hurdles hurdle in hurdleList)
+        //    {
+         //       if(runner.BoundingBox.Intersects(hurdle.BoundingBox))
+         //       {
+         //           toRemove = hurdle;
+        //            break;
+        //        }
+         //   }
+    //
+        //    if (toRemove != null)
+         //   {
+         //       hurdleList.Remove(toRemove);
+         //   }
+       // }
     }
 }
