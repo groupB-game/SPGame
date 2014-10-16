@@ -496,5 +496,15 @@ namespace TestGame
         {
 
         }
+
+        public void collision()
+        {
+
+            if (runner.rectangle.Intersects(hurdle1.rectangle))
+            { runner = new Animation(Content.Load<Texture2D>("RunnerWHat"), new Vector2(640, 880), 330, 288); }
+        }
+            
     }
+
+
 }
