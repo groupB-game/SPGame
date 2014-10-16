@@ -24,6 +24,10 @@ namespace TestGame
         float interval=50;
         Boolean hasJumped;
 
+        public Rectangle BoundingBox
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); }
+        }
 
         public Animation(Texture2D newtexture, Vector2 newPosition, int newFrameHeight, int newFrameWidth)
         {

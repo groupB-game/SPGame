@@ -69,16 +69,18 @@ namespace TestGame
         int screeHeight;
 
         Vector2 velocity;
+        Rectangle backGroundBox;
 
-        Rectangle ballbox;
-        Rectangle runnerBox, backGroundBox;
+        //Collision detection
+        //List<Hurdles> hurdleList;
+
+
         Random randomNumber;
 
         //Hurdles
         private Hurdles hurdle1, hurdle2;
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        public static extern uint MessageBox(IntPtr hWnd, String text, String caption, uint type);
+
 
         public Game1()
         {
@@ -110,7 +112,6 @@ namespace TestGame
             mouseState = Mouse.GetState();
             previousMouseState = mouseState;
 
-  
 
             base.Initialize();
         }
@@ -131,9 +132,7 @@ namespace TestGame
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
 
-            ballbox = new Rectangle(10, 10, 30, 30);
-
-            //Load font 
+                //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
@@ -192,8 +191,8 @@ namespace TestGame
 
                 //while (hurdlepickup.Count>0)
                 //{
-                hurdle1 = new Hurdles(Content.Load<Texture2D>(item1), new Rectangle(2010, 790, 150, 150));
-                hurdle2 = new Hurdles(Content.Load<Texture2D>(item2), new Rectangle(3800, 650, 150, 150));
+                hurdle1 = new Hurdles(Content.Load<Texture2D>(item1));
+                hurdle2 = new Hurdles(Content.Load<Texture2D>(item2));
 
                 //hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
                 //}
@@ -229,7 +228,6 @@ namespace TestGame
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
@@ -248,12 +246,9 @@ namespace TestGame
             //score++;
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                //MessageBox(new IntPtr(0), "Do you want to Exit?", "Alert", 0);
-                
                 int Score = score;
                 if (Int32.Parse(ReadHighScore()) < score)
                 {
-                    
                     SaveHighScore(score);
                 }
                 this.Exit();
@@ -298,7 +293,6 @@ namespace TestGame
 
                 //Scrolling path
 
-
                 if (scrolling1.rectangle.X + 1920 <= 0)
                 {
                     scrolling1.rectangle.X = scrolling2.rectangle.X + 1920;
@@ -341,7 +335,8 @@ namespace TestGame
                     hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
                 }
 
-
+                //Collisions
+                //HandleCollisions();
 
 
 
@@ -408,6 +403,7 @@ namespace TestGame
             }
             if (gameState == GameState.Playing)
             {
+                               
                 backGround1.Drow(spriteBatch);
                 backGround2.Drow(spriteBatch);
                 backGround3.Drow(spriteBatch);
@@ -435,10 +431,8 @@ namespace TestGame
                 
             }
 
+
             
-
-
-
             spriteBatch.End();
 
 
@@ -531,5 +525,24 @@ namespace TestGame
         {
 
         }
+
+       // public void HandleCollisions()
+       // {
+       //     Hurdles toRemove = null;
+//
+         //   foreach(Hurdles hurdle in hurdleList)
+        //    {
+         //       if(runner.BoundingBox.Intersects(hurdle.BoundingBox))
+         //       {
+         //           toRemove = hurdle;
+        //            break;
+        //        }
+         //   }
+    //
+        //    if (toRemove != null)
+         //   {
+         //       hurdleList.Remove(toRemove);
+         //   }
+       // }
     }
 }
