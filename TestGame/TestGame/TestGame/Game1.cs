@@ -69,9 +69,18 @@ namespace TestGame
         int screeHeight;
 
         Vector2 velocity;
+        Rectangle backGroundBox;
 
-        Rectangle ballbox;
-        Rectangle runnerBox, backGroundBox;
+        //Collision detection
+       // Texture2D hurdle1Texture;
+       // Texture2D runnerTexture;
+       // Rectangle hurdleBox;
+       // Rectangle runnerBox;
+       // Vector2 runnerPosition;
+       // Vector2 boxPosition;
+       // Vector2 boxVelocity;
+
+
         Random randomNumber;
 
         //Hurdles
@@ -107,6 +116,10 @@ namespace TestGame
             mouseState = Mouse.GetState();
             previousMouseState = mouseState;
 
+           // boxPosition = new Vector2(this.GraphicsDevice.Viewport.Width / 2, this.GraphicsDevice.Viewport.Height * 0.25f);
+          //  runnerPosition = new Vector2(this.GraphicsDevice.Viewport.Width / 2, this.GraphicsDevice.Viewport.Height * 0.75f);
+          //  boxVelocity = new Vector2(0, 1);
+
             base.Initialize();
         }
 
@@ -126,7 +139,14 @@ namespace TestGame
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
 
-            ballbox = new Rectangle(10, 10, 30, 30);
+            //ballbox = new Rectangle(10, 10, 30, 30);
+
+           // hurdle1Texture = Content.Load<Texture2D>("Pickups/(b)bad_tutor_pickup");
+           // runnerTexture = Content.Load<Texture2D>("RunnerWHat");
+
+          //  hurdleBox = new Rectangle((int)(boxPosition.X - hurdle1Texture.Width / 2), (int)(boxPosition.Y - hurdle1Texture.Height / 2), hurdle1Texture.Width, hurdle1Texture.Height);
+          //  runnerBox = new Rectangle((int)(boxPosition.X - hurdle1Texture.Width / 2), (int)(boxPosition.Y - hurdle1Texture.Height / 2), hurdle1Texture.Width, hurdle1Texture.Height);
+
 
             //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
@@ -318,7 +338,23 @@ namespace TestGame
                     hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
                 }
 
+                //Collisions
+              //  if(hurdleBox.Intersects(runnerBox) || !GraphicsDevice.Viewport.Bounds.Contains(hurdleBox))
+             //   {
+              //      boxVelocity = -boxVelocity;
+             //       boxPosition += boxVelocity;
+             //   }
+             //   else
+             //   {
+             //       boxPosition += boxVelocity;
+             //   }
 
+                //Updates bounding boxes
+              //  hurdleBox.X = (int)boxPosition.X;
+               // hurdleBox.Y = (int)boxPosition.Y;
+
+               // runnerBox.X = (int)runnerPosition.X;
+               // runnerBox.Y = (int)runnerPosition.Y;
 
 
 
@@ -380,6 +416,9 @@ namespace TestGame
             }
             if (gameState == GameState.Playing)
             {
+               // spriteBatch.Draw(hurdle1Texture, boxPosition, Color.White);
+                //spriteBatch.Draw(runnerTexture, runnerPosition, Color.White);
+                
                 backGround1.Drow(spriteBatch);
                 backGround2.Drow(spriteBatch);
                 backGround3.Drow(spriteBatch);
@@ -403,7 +442,7 @@ namespace TestGame
             }
 
 
-
+            
             spriteBatch.End();
 
 
