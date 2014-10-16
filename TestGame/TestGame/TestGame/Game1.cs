@@ -227,7 +227,10 @@ namespace TestGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
                 int Score = score;
-                SaveHighScore(Score);
+                if (Int32.Parse(ReadHighScore()) < score)
+                {
+                    SaveHighScore(score);
+                }
                 this.Exit();
             }
 
@@ -237,7 +240,10 @@ namespace TestGame
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 int Score = score;
-                SaveHighScore(Score);
+                if (Int32.Parse(ReadHighScore()) < score)
+                {
+                    SaveHighScore(score);
+                }
                 this.Exit();
 
             }
@@ -361,7 +367,7 @@ namespace TestGame
                 score++;
             }
 
-            //SaveHighScore(score);
+            
         }
 
 
@@ -402,6 +408,7 @@ namespace TestGame
                 hurdle1.Drow(spriteBatch);
                 hurdle2.Drow(spriteBatch);
                 spriteBatch.DrawString(font, "Score: " + score, new Vector2(1700, 10), Color.White);
+                
                 if (score > Int32.Parse(checkScore))
                 {
                     spriteBatch.DrawString(font, "High Score ", new Vector2(100, 10), Color.White);
@@ -412,7 +419,8 @@ namespace TestGame
                 spriteBatch.DrawString(font, "Current Score  " + score, new Vector2(100, 10), Color.White);
                 spriteBatch.Draw(resumeButton, resumeButtonPosition, Color.White);
                 //Save Score
-                SaveHighScore(score);
+               
+                
             }
 
 
