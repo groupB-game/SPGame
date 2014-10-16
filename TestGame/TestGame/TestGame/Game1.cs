@@ -69,9 +69,12 @@ namespace TestGame
         int screeHeight;
 
         Vector2 velocity;
+        Rectangle backGroundBox;
 
-        Rectangle ballbox;
-        Rectangle runnerBox, backGroundBox;
+        //Collision detection
+        //List<Hurdles> hurdleList;
+
+
         Random randomNumber;
 
         //Hurdles
@@ -110,6 +113,7 @@ namespace TestGame
             mouseState = Mouse.GetState();
             previousMouseState = mouseState;
 
+
             base.Initialize();
         }
 
@@ -128,8 +132,6 @@ namespace TestGame
 
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
-
-            ballbox = new Rectangle(10, 10, 30, 30);
 
             //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
@@ -225,7 +227,10 @@ namespace TestGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
                 int Score = score;
-                SaveHighScore(Score);
+                if (Int32.Parse(ReadHighScore()) < score)
+                {
+                    SaveHighScore(score);
+                }
                 this.Exit();
             }
 
@@ -235,7 +240,10 @@ namespace TestGame
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 int Score = score;
-                SaveHighScore(Score);
+                if (Int32.Parse(ReadHighScore()) < score)
+                {
+                    SaveHighScore(score);
+                }
                 this.Exit();
 
             }
@@ -277,7 +285,6 @@ namespace TestGame
                 }
 
                 //Scrolling path
-
 
                 if (scrolling1.rectangle.X + 1920 <= 0)
                 {
@@ -332,7 +339,8 @@ namespace TestGame
                     hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
                 }
 
-
+                //Collisions
+                //HandleCollisions();
 
 
 
@@ -370,7 +378,7 @@ namespace TestGame
                 score++;
             }
 
-            //SaveHighScore(score);
+            
         }
 
 
@@ -399,6 +407,7 @@ namespace TestGame
             }
             if (gameState == GameState.Playing)
             {
+                               
                 backGround1.Drow(spriteBatch);
                 backGround2.Drow(spriteBatch);
                 backGround3.Drow(spriteBatch);
@@ -411,6 +420,7 @@ namespace TestGame
                 hurdle1.Drow(spriteBatch);
                 hurdle2.Drow(spriteBatch);
                 spriteBatch.DrawString(font, "Score: " + score, new Vector2(1700, 10), Color.White);
+                
                 if (score > Int32.Parse(checkScore))
                 {
                     spriteBatch.DrawString(font, "High Score ", new Vector2(100, 10), Color.White);
@@ -421,7 +431,8 @@ namespace TestGame
                 spriteBatch.DrawString(font, "Current Score  " + score, new Vector2(100, 10), Color.White);
                 spriteBatch.Draw(resumeButton, resumeButtonPosition, Color.White);
                 //Save Score
-                SaveHighScore(score);
+               
+                
             }
 
 
@@ -518,5 +529,24 @@ namespace TestGame
         {
 
         }
+
+       // public void HandleCollisions()
+       // {
+       //     Hurdles toRemove = null;
+//
+         //   foreach(Hurdles hurdle in hurdleList)
+        //    {
+         //       if(runner.BoundingBox.Intersects(hurdle.BoundingBox))
+         //       {
+         //           toRemove = hurdle;
+        //            break;
+        //        }
+         //   }
+    //
+        //    if (toRemove != null)
+         //   {
+         //       hurdleList.Remove(toRemove);
+         //   }
+       // }
     }
 }
