@@ -11,12 +11,17 @@ namespace TestGame
     {
         public Texture2D  texture;
         public Rectangle rectangle;
-        public List<string> hurdlepickup;
+        public Vector2 position;
+        public List<Hurdles> hurdlepickuplist;
 
-        public Hurdles(Texture2D newTexture, Rectangle newRectangle)
+        public Hurdles(Texture2D newTexture)
         {
             this.texture = newTexture;
-            this.rectangle = newRectangle;
+        }
+
+        public Rectangle BoundingBox
+        {
+            get { return new Rectangle((int)position.X,(int)position.Y, texture.Width,texture.Height);}
         }
 
         public void Update()
@@ -28,6 +33,8 @@ namespace TestGame
         {
             spriteBatch.Draw(texture, rectangle, Color.White);
         }
+
+        
     }
 }
 
