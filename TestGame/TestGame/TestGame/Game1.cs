@@ -292,7 +292,7 @@ namespace TestGame
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
-                    score -= 25;
+                    score += 10;
                     darkscreenmovement++;
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
@@ -311,8 +311,11 @@ namespace TestGame
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
-                    score -= 25;
-                    darkscreenmovement++;
+                    if(score > 0)
+                    {
+                        score -= 25;
+                    }
+                    darkscreenmovement = darkscreenmovement + 10;
                     //hurdle2.rectangle.Y += 1000;
                     //hurdle2.rectangle.Y = random2;
                     //hurdle2.rectangle.X = random;
