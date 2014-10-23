@@ -31,7 +31,7 @@ namespace TestGame
 
 
         int count = 0;
-        //MassageBox
+        //MessageBox
 
 
 
@@ -80,6 +80,7 @@ namespace TestGame
         //Hurdles
         private Hurdles hurdle1, hurdle2;
 
+        List<string> randomisedPickupList = new List<string>();
 
 
         public Game1()
@@ -132,7 +133,7 @@ namespace TestGame
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("boll");
 
-                //Load font 
+            //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
             //Scrolling path
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
@@ -155,8 +156,8 @@ namespace TestGame
             screenWidth = GraphicsDevice.Viewport.Width;
             screeHeight = GraphicsDevice.Viewport.Height;
 
-            //Hurdles load
-            string[] hurdlepickup = new string[]
+            // Load hurdles into string array named hurdlepickup.
+            List<string> hurdlePickup = new List<string>
             {
                 "Pickups/(b)bad_tutor_pickup",
                 "Pickups/(b)f_pickup",
@@ -180,28 +181,20 @@ namespace TestGame
                 "Pickups/(g)study_time_pickup"
             };
 
+            //List<string> pickupList = new List<string>(hurdlePickup);
+
             for (int i = 0; i < 20; i++)
             {
-                //int randomNumber = new Random.Next(0,hurdlepickup.Last);
-                //int newrandom = randomNumber.Next(0, 19);
+                Random randomPickupTexture = new Random();
 
-                Random randomNumber = new Random();
-                String item1 = hurdlepickup[randomNumber.Next(hurdlepickup.Length)];
-                String item2 = hurdlepickup[randomNumber.Next(hurdlepickup.Length)];
+                int hurdleIndex = randomPickupTexture.Next(hurdlePickup.Count);
+                randomisedPickupList.Add(hurdlePickup[hurdleIndex]);
 
-                //while (hurdlepickup.Count>0)
-                //{
-                hurdle1 = new Hurdles(Content.Load<Texture2D>(item1));
-                hurdle2 = new Hurdles(Content.Load<Texture2D>(item2));
-
-                //hurdle3 = new Hurdles(Content.Load<Texture2D>("Grad Hat Icon"), new Rectangle(11000, 650, 150, 150));
-                //}
+                hurdlePickup.RemoveAt(hurdleIndex);
             }
 
-            //hurdle1 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(2010, 790, 150, 150));
-            //hurdle2 = new Hurdles(Content.Load<Texture2D>("(g)A+ pickup"), new Rectangle(3800, 650, 150, 150));
 
-            //Start Manu item Loading
+            //Start Menu item Loading
             IsMouseVisible = true;
             startButton = Content.Load<Texture2D>("StartScreen/start");
             exitButton = Content.Load<Texture2D>("StartScreen/exit");
@@ -326,6 +319,17 @@ namespace TestGame
                 }
 
                 //Hurdle looping
+                String randomHurdle1;
+                String randomHurdle2;
+
+                Random randomUpdateHurdleIndex = new Random();
+                randomHurdle1 = randomisedPickupList[randomUpdateHurdleIndex.Next(randomisedPickupList.Count)];
+                randomHurdle2 = randomisedPickupList[randomUpdateHurdleIndex.Next(randomisedPickupList.Count)];
+
+
+                hurdle1 = new Hurdles(Content.Load<Texture2D>(randomHurdle1), new Rectangle(2010, 790, 150, 150));
+                hurdle2 = new Hurdles(Content.Load<Texture2D>(randomHurdle2), new Rectangle(3800, 650, 150, 150));
+
                 if (hurdle1.rectangle.X + 2000 <= 0)
                 {
                     hurdle1.rectangle.X = hurdle2.rectangle.X + 2000;
@@ -432,7 +436,7 @@ namespace TestGame
             }
 
 
-            
+
             spriteBatch.End();
 
 
