@@ -293,7 +293,7 @@ namespace TestGame
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
                     score += 10;
-                    darkscreenmovement++;
+                    darkscreenmovement = darkscreenmovement - 10;
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
                     // hurdle1.rectangle.X = random;
@@ -328,6 +328,8 @@ namespace TestGame
 
                 //Set close screen.
                 backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
+
+                
 
                 //Update.
                 scrolling1.Update();
