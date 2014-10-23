@@ -314,8 +314,11 @@ namespace TestGame
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
-                    score -= 25;
-                    darkscreenmovement++;
+                    score += 25;
+                    if (darkscreenmovement > 0)
+                    {
+                        darkscreenmovement = darkscreenmovement - 5; 
+                    }                    
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
                     // hurdle1.rectangle.X = random;
@@ -331,8 +334,11 @@ namespace TestGame
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
-                    score -= 25;
-                    darkscreenmovement++;
+                    if(score > 0)
+                    {
+                        score -= 25;
+                    }                    
+                    darkscreenmovement = darkscreenmovement + 10;
                     //hurdle2.rectangle.Y += 1000;
                     //hurdle2.rectangle.Y = random2;
                     //hurdle2.rectangle.X = random;
@@ -342,8 +348,24 @@ namespace TestGame
                 }
                 backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
 
+                int timer = 1;
+                int limit = 5;
+                float countDuration = 1f;
+                float currentTime = 0f;
 
+                currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+                if(currentTime >= countDuration)
+                {
+                    timer++;
+                    currentTime -= countDuration;
+                    
+                }
+                if(timer >= limit)
+                {
+                    darkscreenmovement++;
+                    timer = 0;                    
+                }
 
 
                 scrolling1.Update();
@@ -601,6 +623,8 @@ namespace TestGame
             HurdlesGood.Add("(g)study_time_pickup");
             return HurdlesGood;
         }
+
+        
     }
 }
 
