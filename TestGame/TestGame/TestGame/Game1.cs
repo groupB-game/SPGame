@@ -104,12 +104,6 @@ namespace TestGame
         /// </summary>
         protected override void Initialize()
         {
-            //Delete this two method once you run.
-            SaveHighScore(score);
-            SavePlayer(playre);
-
-
-
             playre = ReadPlayer();
 
             // TODO: Add your initialization logic here
