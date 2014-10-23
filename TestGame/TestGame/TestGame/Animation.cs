@@ -21,13 +21,17 @@ namespace TestGame
         int frameWidth;
 
         float timer;
-        float interval=50;
+        float interval = 50;
         Boolean hasJumped;
 
-        public Rectangle BoundingBox
+        public Rectangle PositionRectangle
         {
-            get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); }
+            get
+            {
+                return (new Rectangle((int)position.X, (int)position.Y, 60, 100));
+            }
         }
+
 
         public Animation(Texture2D newtexture, Vector2 newPosition, int newFrameHeight, int newFrameWidth)
         {
@@ -44,13 +48,12 @@ namespace TestGame
             origin = new Vector2(rectangle.Width / 2, rectangle.Height / 2);
             position = position + velocity;
 
-            
-             
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped ==false )
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && hasJumped == false)
             {
-               
+
                 position.Y -= 60f;
-                velocity.Y = -15f;
+                velocity.Y = -20f;
                 hasJumped = true;
 
             }
@@ -68,18 +71,15 @@ namespace TestGame
             }
             if (position.Y + texture.Height >= 1175)
             {
-                
-                hasJumped =false;
+
+                hasJumped = false;
             }
             if (hasJumped == false)
             {
                 velocity.Y = 0f;
             }
-            //if (position.Y <= 650)
-            //{
-            //    currentFrame = 2;
-            //}
-            if (velocity.Y >0)
+
+            if (velocity.Y > 0)
             {
                 currentFrame = 2;
             }
@@ -88,17 +88,17 @@ namespace TestGame
                 currentFrame = 1;
             }
 
-            
+
 
         }
 
-        
+
 
 
         //Collision
 
-        
-       
+
+
         public void AnimateReight(GameTime gameTiem)
         {
             timer += (float)gameTiem.ElapsedGameTime.TotalMilliseconds / 2;
@@ -120,7 +120,7 @@ namespace TestGame
             {
                 currentFrame++;
                 timer = 0;
-                if (currentFrame > 7 || currentFrame <4)
+                if (currentFrame > 7 || currentFrame < 4)
                 {
                     currentFrame = 4;
                 }
@@ -140,13 +140,15 @@ namespace TestGame
                     currentFrame = 1;
                 }
             }
-            
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture,position , rectangle, Color.White,0f,origin,1.0f,SpriteEffects.None ,0);
+            spriteBatch.Draw(texture, position, rectangle, Color.White, 0f, origin, 1.0f, SpriteEffects.None, 0);
         }
     }
-    
+
 }
+
+
