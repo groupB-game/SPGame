@@ -8,14 +8,22 @@ using System.Text;
 
 namespace TestGame
 {
+    /// <summary>
+    /// Class to hold the variables and methods for the Animated sprites.
+    /// </summary>
     class Animation
     {
+        //Public variable to hold the texture of the animated sprite.
         public Texture2D texture;
+        //Public variable to hold the rectangle details of the animated sprite.
         public Rectangle rectangle;
+        //Public variable holds the position of the animated sprite.
         public Vector2 position;
+        //Public variable holds the original position of the animated sprite.
         Vector2 origin;
+        //Public variable holds the velocity of the animated sprite.
         public Vector2 velocity;
-
+        //Public variable holds which frame is currently showing
         public int currentFrame;
         int frameHeight;
         int frameWidth;
@@ -24,6 +32,9 @@ namespace TestGame
         float interval=50;
         Boolean hasJumped;
 
+        /// <summary>
+        ///  Public variable that only allows the retreval of the data for the bounding box details for use in collision detection.
+        /// </summary>
         public Rectangle BoundingBox
         {
             get { return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height); }
