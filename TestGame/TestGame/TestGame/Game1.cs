@@ -328,20 +328,22 @@ namespace TestGame
                     hurdle2.rectangle.X -= 10;
                 }
 
-                //Set close screen.
-                backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
-
                 float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                float creepTimer = 1f;
+                float creepTimer = 10;
 
                 creepTimer -= elapsedTime;
 
-                if(creepTimer <= 0)
+                if (creepTimer >= 0)
                 {
                     darkscreenmovement++;
-                    creepTimer = 1f;
+                    creepTimer = 100f;
                 }
 
+
+                //Set close screen.
+                backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
+
+                
                 //Update.
                 scrolling1.Update();
                 scrolling2.Update();
