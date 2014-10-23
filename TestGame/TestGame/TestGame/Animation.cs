@@ -123,6 +123,7 @@ namespace TestGame
                 if (currentFrame > 7 || currentFrame < 4)
                 {
                     currentFrame = 4;
+
                 }
             }
         }
@@ -133,6 +134,7 @@ namespace TestGame
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
             if (timer > interval)
             {
+                
                 currentFrame++;
                 timer = 0;
                 if (currentFrame > 1)
