@@ -9,19 +9,22 @@ namespace TestGame
 {
     class Hurdles
     {
-        public Texture2D  texture;
+        public Texture2D texture;
         public Rectangle rectangle;
-        public Vector2 position;
-        public List<Hurdles> hurdlepickuplist;
+        public List<string> hurdlepickup;
 
-        public Hurdles(Texture2D newTexture)
+        public Rectangle PositionRectangle
         {
-            this.texture = newTexture;
+            get
+            {
+                return (new Rectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height));
+            }
         }
 
-        public Rectangle BoundingBox
+        public Hurdles(Texture2D newTexture, Rectangle newRectangle)
         {
-            get { return new Rectangle((int)position.X,(int)position.Y, texture.Width,texture.Height);}
+            this.texture = newTexture;
+            this.rectangle = newRectangle;
         }
 
         public void Update()
@@ -33,8 +36,6 @@ namespace TestGame
         {
             spriteBatch.Draw(texture, rectangle, Color.White);
         }
-
-        
     }
 }
 
