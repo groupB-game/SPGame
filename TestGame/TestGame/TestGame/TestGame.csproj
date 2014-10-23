@@ -76,6 +76,8 @@
     <Compile Include="BackGround.cs" />
     <Compile Include="HighScoreData.cs" />
     <Compile Include="Hurdles.cs" />
+    <Compile Include="MainManu.cs" />
+    <Compile Include="ManuUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
