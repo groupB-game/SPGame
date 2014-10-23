@@ -8,6 +8,7 @@ using System.Text;
 
 namespace TestGame
 {
+  
     class Animation
     {
         public Texture2D texture;
@@ -91,12 +92,6 @@ namespace TestGame
 
 
         }
-
-
-
-
-        //Collision
-
 
 
         public void AnimateReight(GameTime gameTiem)
