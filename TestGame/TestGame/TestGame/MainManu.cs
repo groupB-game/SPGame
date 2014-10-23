@@ -10,33 +10,43 @@ using System.Text;
 
 namespace TestGame
 {
+    /// <summary>
+    /// Create menu views.
+    /// </summary>
     class MainManu
     {
-
+        /// <summary>
+        /// Define game states.
+        /// </summary>
         enum GameState { mainMenu, start, highscore, play }
         GameState gamestate;
 
+        //Create list to hold element for different state.
         List<ManuUI> UImain = new List<ManuUI>();
         List<ManuUI> NameEnter = new List<ManuUI>();
         List<ManuUI> ScoreBoard = new List<ManuUI>();
         public String Set = "";
 
+        //Declare font.
         private SpriteFont sf;
+
         public string PlayerName = string.Empty;
 
+        //Declare key array to hold input.
         private Keys[] lastpressedkeys = new Keys[5];
 
         public MainManu()
         {
+            //Initialise Main menu items.
             UImain.Add(new ManuUI("StartScreen/mainmanu"));
             UImain.Add(new ManuUI("StartScreen/start"));
             UImain.Add(new ManuUI("StartScreen/highscore"));
-
-
-
+            
+            //Initialise Start memu items.
             NameEnter.Add(new ManuUI("StartScreen/entername"));
             NameEnter.Add(new ManuUI("StartScreen/done"));
 
+            //Initialise Score board items.
             ScoreBoard.Add(new ManuUI("StartScreen/scoreboard"));
             ScoreBoard.Add(new ManuUI("StartScreen/ok"));
 
@@ -44,15 +54,21 @@ namespace TestGame
 
         public void LoadContent(ContentManager content)
         {
+            //Initialise game font.
             sf = content.Load<SpriteFont>("ScoreFont/Score");
+
+            //Load and set click event for Main menu elements.
             foreach (ManuUI element in UImain)
             {
                 element.LoadContent(content);
                 element.SetCenter(1080, 1920);
                 element.clickEvent += OnClick;
             }
+
+            //Change start button possition.
             UImain.Find(x => x.ButtonName1 == "StartScreen/start").ChangePosition(0, -150);
 
+            //Load and set click event for Enter name menu elements.
             foreach (ManuUI element in NameEnter)
             {
                 element.LoadContent(content);
@@ -60,19 +76,27 @@ namespace TestGame
                 element.clickEvent += OnClick;
             }
 
+            //Change done button possition.
             NameEnter.Find(x => x.ButtonName1 == "StartScreen/done").ChangePosition(0, 78);
 
+            //Load and set click event for ScoreBoard menu elements.
             foreach (ManuUI element in ScoreBoard)
             {
                 element.LoadContent(content);
                 element.SetCenter(1080, 1920);
                 element.clickEvent += OnClick;
             }
+
+            //Change ok button possition.
             ScoreBoard.Find(x => x.ButtonName1 == "StartScreen/ok").ChangePosition(0, 100);
         }
+
+        /// <summary>
+        /// Update each menu item.
+        /// </summary>
         public void Update()
         {
-
+            //Update memu item in each gamestate.
             switch (gamestate)
             {
                 case GameState.mainMenu:
@@ -96,16 +120,16 @@ namespace TestGame
                         element.Update();
                     }
                     break;
-
             }
-
-
-
         }
 
+        /// <summary>
+        /// Draw button for each game state.
+        /// </summary>
+        /// <param name="spritebatch"></param>
         public void Draw(SpriteBatch spritebatch)
         {
-
+            //Draw button for each game state.
             switch (gamestate)
             {
                 case GameState.mainMenu:
@@ -134,6 +158,10 @@ namespace TestGame
 
         }
 
+        /// <summary>
+        /// Set click event for each button.
+        /// </summary>
+        /// <param name="element"></param>
         public void OnClick(string element)
         {
             if (element == "StartScreen/start")
@@ -155,6 +183,9 @@ namespace TestGame
             }
         }
 
+        /// <summary>
+        /// Get keyboard pressed key.
+        /// </summary>
         public void Getkeys()
         {
             KeyboardState kbState = Keyboard.GetState();
@@ -180,34 +211,45 @@ namespace TestGame
             lastpressedkeys = pressedKeys;
         }
 
+        /// <summary>
+        /// pressed key up event.
+        /// </summary>
+        /// <param name="key"></param>
         public void OnkeyUp(Keys key)
         {
 
         }
 
+        /// <summary>
+        /// Pressed key down event.
+        /// </summary>
+        /// <param name="key"></param>
         public void OnkeyDown(Keys key)
         {
-
             List<Keys> Allotherkey = new List<Keys>();
-            Allotherkey.Add(Keys.Back);
-            Allotherkey.Add(Keys.Enter);
-            Allotherkey.Add(Keys.Space);
+
+            //Delete name character.
             if (key == Keys.Back && PlayerName.Length > 0)
             {
                 PlayerName = PlayerName.Remove(PlayerName.Length - 1);
             }
+
+            //Filter character keys.
             else if (key == Keys.Back || key == Keys.Enter || key == Keys.Space || key == Keys.RightAlt || key == Keys.RightControl)
             {
 
             }
+            //Filter character keys.
             else if (key == Keys.RightShift || key == Keys.LeftShift || key == Keys.CapsLock || key == Keys.Tab || key == Keys.LeftAlt)
             {
 
             }
+            //Filter character keys.
             else if (key == Keys.LeftControl || key == Keys.RightShift || key == Keys.Delete || key == Keys.LeftWindows || key == Keys.RightWindows)
             {
 
             }
+            //Assign player name form key values.
             else
             {
                 PlayerName += key.ToString();
@@ -216,7 +258,10 @@ namespace TestGame
 
         }
 
-
+        /// <summary>
+        /// Read high score.
+        /// </summary>
+        /// <returns></returns>
         public string ReadHighScore()
         {
             string read = "";
@@ -235,6 +280,10 @@ namespace TestGame
             return read;
         }
 
+        /// <summary>
+        /// Read high score holder name.
+        /// </summary>
+        /// <returns></returns>
         public string ReadPlayer()
         {
             string read = "";
