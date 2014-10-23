@@ -53,12 +53,14 @@ namespace TestGame
         MouseState previousMouseState;
         Texture2D pushButton;
 
+
+
         //Game Main Manu.
         MainManu menu = new MainManu();
 
         //Game state initialize
         private GameState gameState;
-        
+
         //Declare runner variable.
         Animation runner;
 
@@ -74,7 +76,7 @@ namespace TestGame
 
         Vector2 velocity;
 
-      
+
         //Hurdles variable
         private Hurdles hurdle1, hurdle2;
 
@@ -293,7 +295,7 @@ namespace TestGame
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
                     score += 10;
-                    darkscreenmovement++;
+                    darkscreenmovement = darkscreenmovement - 10;
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
                     // hurdle1.rectangle.X = random;
@@ -313,7 +315,7 @@ namespace TestGame
                     int random2 = r.Next(100, 600);
                     if(score > 0)
                     {
-                        score -= 25;
+                    score -= 25;
                     }
                     darkscreenmovement = darkscreenmovement + 10;
                     //hurdle2.rectangle.Y += 1000;
@@ -328,6 +330,17 @@ namespace TestGame
 
                 //Set close screen.
                 backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
+
+                float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                float creepTimer = 1f;
+
+                creepTimer -= elapsedTime;
+
+                if(creepTimer <= 0)
+                {
+                    darkscreenmovement++;
+                    creepTimer = 1f;
+                }
 
                 //Update.
                 scrolling1.Update();
@@ -445,7 +458,7 @@ namespace TestGame
             {
                 Rectangle startButtonRect = new Rectangle((int)startButtonPosition.X, (int)startButtonPosition.Y, 100, 20);
                 Rectangle exitButtonRect = new Rectangle((int)exitButtonPosition.X, (int)exitButtonPosition.Y, 100, 20);
-                
+
                 //player clicked start button
                 if (mouseClickRect.Intersects(startButtonRect)) 
                 {
