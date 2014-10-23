@@ -53,6 +53,8 @@ namespace TestGame
         MouseState previousMouseState;
         Texture2D pushButton;
 
+        
+
         //Game Main Manu.
         MainManu menu = new MainManu();
 
@@ -321,7 +323,7 @@ namespace TestGame
                     //hurdle2.rectangle.X = random;
 
                     //Set hurdle2 to random generate.
-                    hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
+                      hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
 
                     hurdle2.rectangle.X -= 10;
                 }
@@ -329,7 +331,16 @@ namespace TestGame
                 //Set close screen.
                 backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
 
-                
+                float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                float creepTimer = 1f;
+
+                creepTimer -= elapsedTime;
+
+                if(creepTimer <= 0)
+                {
+                    darkscreenmovement++;
+                    creepTimer = 1f;
+                }
 
                 //Update.
                 scrolling1.Update();
