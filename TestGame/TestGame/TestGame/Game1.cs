@@ -31,7 +31,7 @@ namespace TestGame
 
 
         int count = 0;
-        //MassageBox
+        
 
 
 
@@ -104,9 +104,6 @@ namespace TestGame
         /// </summary>
         protected override void Initialize()
         {
-            //Delete this two method once you run.
-            
-
             playre = ReadPlayer();
 
             // TODO: Add your initialization logic here

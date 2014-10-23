@@ -314,11 +314,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StartScreen\darkscreen.png">
-      <Name>darkscreen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="StartScreen\done.png">
       <Name>done</Name>
       <Importer>TextureImporter</Importer>
@@ -356,6 +351,13 @@
     </Compile>
     <Compile Include="StartScreen\start.png">
       <Name>start</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="StartScreen\darkscreen.png">
+      <Name>darkscreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
