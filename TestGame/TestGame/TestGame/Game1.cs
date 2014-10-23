@@ -288,7 +288,7 @@ namespace TestGame
                 {
                     Random r = new Random();
                     int r1 = r.Next(0, 8);
-                    List<string> Hurdlelist = HurdlesList();
+                    List<string> Hurdlelist = HurdlesGood();
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
@@ -307,7 +307,7 @@ namespace TestGame
                 {
                     Random r = new Random();
                     int r1 = r.Next(0, 8);
-                    List<string> Hurdlelist = HurdlesGood();
+                    List<string> Hurdlelist = HurdlesList();
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
