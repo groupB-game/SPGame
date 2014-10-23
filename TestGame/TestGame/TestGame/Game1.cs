@@ -315,7 +315,7 @@ namespace TestGame
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
                     score -= 25;
-                    darkscreenmovement++;
+                    darkscreenmovement+=50;
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
                     // hurdle1.rectangle.X = random;
@@ -332,7 +332,7 @@ namespace TestGame
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
                     score -= 25;
-                    darkscreenmovement++;
+                    darkscreenmovement-=50;
                     //hurdle2.rectangle.Y += 1000;
                     //hurdle2.rectangle.Y = random2;
                     //hurdle2.rectangle.X = random;
