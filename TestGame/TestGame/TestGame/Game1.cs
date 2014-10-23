@@ -19,6 +19,7 @@ namespace TestGame
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        //Difine game state.
         enum GameState
         {
             StartMenu,
@@ -26,15 +27,14 @@ namespace TestGame
             Playing,
             Paused
         }
+
+        //Default.
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
+        //hold frame of sprite.
         int count = 0;
         
-
-
-
         //Score
         private int score = 0;
         private string playre = "";
@@ -53,24 +53,20 @@ namespace TestGame
         MouseState previousMouseState;
         Texture2D pushButton;
 
-        //Game Main Manu
+        //Game Main Manu.
         MainManu menu = new MainManu();
-
-        //Collision
-        Color backgroundclour = Color.Aquamarine;
 
         //Game state initialize
         private GameState gameState;
-        private Thread backgroundThread;
-
-
+        
+        //Declare runner variable.
         Animation runner;
 
-        //Scrolling Path
+        //Scrolling Path varible.
         private ScrollingPath scrolling1, scrolling2;
         private BackGround backGround1, backGround2, backGround3, backGround4, backGround5, backGround6;
 
-        //Screen parameters
+        //Screen parameters.
         int screenWidth;
         int screeHeight;
         public int darkscreenmovement = 0;
@@ -78,18 +74,16 @@ namespace TestGame
 
         Vector2 velocity;
 
-        Rectangle ballbox;
-        Rectangle runnerBox, backGroundBox;
-        Random randomNumber;
-
-        //Hurdles
+      
+        //Hurdles variable
         private Hurdles hurdle1, hurdle2;
-
 
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+
+            //Define screen size
             //graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
@@ -104,15 +98,17 @@ namespace TestGame
         /// </summary>
         protected override void Initialize()
         {
+            //Assign high score holder.
             playre = ReadPlayer();
 
-            // TODO: Add your initialization logic here
-            //Runner
+            //Initialising Runner.
             runner = new Animation(Content.Load<Texture2D>("Runner3"), new Vector2(640, 880), 288, 294);
 
+            //Initialising button possition.
             startButtonPosition = new Vector2((GraphicsDevice.Viewport.Width / 2) - 100, 410);
             exitButtonPosition = new Vector2((GraphicsDevice.Viewport.Width / 2) - 95, 510);
 
+            //Initialising mouse paramiter.
             mouseState = Mouse.GetState();
             previousMouseState = mouseState;
 
@@ -128,49 +124,33 @@ namespace TestGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //Main Manu
+            //Main Manu.
             menu.LoadContent(Content);
-
-            
-
-
-
-            // TODO: use this.Content to load your game content here
-
-
-            ballbox = new Rectangle(10, 10, 30, 30);
 
             //Load font 
             font = Content.Load<SpriteFont>("ScoreFont/Score");
-            //Scrolling path
+
+            //Scrolling path load.
             scrolling1 = new ScrollingPath(Content.Load<Texture2D>("path"), new Rectangle(0, 930, 1920, 150));
             scrolling2 = new ScrollingPath(Content.Load<Texture2D>("path2"), new Rectangle(1920, 930, 1920, 150));
+
+            //Background load.
             backGround1 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(0, 0, 2000, 1080));
             backGround2 = new BackGround(Content.Load<Texture2D>("LabBGNew"), new Rectangle(2000, 0, 2000, 1080));
             backGround3 = new BackGround(Content.Load<Texture2D>("GraduationBG"), new Rectangle(4000, 0, 2000, 1080));
             backGround4 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(6000, 0, 2000, 1080));
             backGround5 = new BackGround(Content.Load<Texture2D>("WorkBG2"), new Rectangle(8000, 0, 2000, 1080));
-
             backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1366 + darkscreenmovement, 0, 1366, 788));
 
-            //Stady background
-            //backGround = Content.Load<Texture2D>("LabBGNew");
-            //backGroundBox = new Rectangle(0, 0, 2000, 1080);
-
-
-
+            //Set default velocity to runner. 
             velocity.X = 3f;
             velocity.Y = 3f;
 
-            screenWidth = GraphicsDevice.Viewport.Width;
-            screeHeight = GraphicsDevice.Viewport.Height;
-
-
-
+            //Load hurdles.
             hurdle1 = new Hurdles(Content.Load<Texture2D>("Pickups/(b)missed_alarm_pickup"), new Rectangle(2010, 790, 150, 150));
             hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/(b)missed_alarm_pickup"), new Rectangle(3800, 650, 150, 150));
 
-            //Start Manu item Loading
+            //Start Manu item Loading.
             IsMouseVisible = true;
             startButton = Content.Load<Texture2D>("StartScreen/start");
             exitButton = Content.Load<Texture2D>("StartScreen/exit");
@@ -178,9 +158,6 @@ namespace TestGame
             loadingScreen = Content.Load<Texture2D>("StartScreen/loading");
             pushButton = Content.Load<Texture2D>("StartScreen/pause");
             resumeButton = Content.Load<Texture2D>("StartScreen/resume");
-
-
-
         }
 
         /// <summary>
@@ -199,7 +176,7 @@ namespace TestGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            //Manu Button Update
+            //Manu Button Update.
             menu.Update();
 
 
@@ -218,7 +195,7 @@ namespace TestGame
 
 
 
-            //score++;
+            //Escape button set to exit.
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 int Score = score;
@@ -232,7 +209,7 @@ namespace TestGame
 
             }
 
-
+            //Initialise mouse click event.
             if (menu.Set == "Done")
             {
                 mouseState = Mouse.GetState();
@@ -245,7 +222,7 @@ namespace TestGame
                 previousMouseState = mouseState;
             }
 
-
+            //Set player state to run game.
             if (gameState == GameState.Playing)
             {
 
@@ -263,7 +240,6 @@ namespace TestGame
                 }
 
                 //Scrolling path
-
 
                 if (scrolling1.rectangle.X + 1920 <= 0)
                 {
@@ -306,6 +282,8 @@ namespace TestGame
                 {
                     hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
                 }
+
+                //Collision hurdle1.
                 if (runner.PositionRectangle.Intersects(hurdle1.PositionRectangle))
                 {
                     Random r = new Random();
@@ -314,11 +292,8 @@ namespace TestGame
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
-                    score += 25;
-                    if (darkscreenmovement > 0)
-                    {
-                        darkscreenmovement = darkscreenmovement - 5; 
-                    }                    
+                    score -= 25;
+                    darkscreenmovement++;
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
                     // hurdle1.rectangle.X = random;
@@ -326,6 +301,8 @@ namespace TestGame
                     hurdle1 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
                     hurdle1.rectangle.X -= 10;
                 }
+
+                //Collision hurdle2.
                 if (runner.PositionRectangle.Intersects(hurdle2.PositionRectangle))
                 {
                     Random r = new Random();
@@ -334,40 +311,22 @@ namespace TestGame
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
-                    if(score > 0)
-                    {
-                        score -= 25;
-                    }                    
-                    darkscreenmovement = darkscreenmovement + 10;
+                    score -= 25;
+                    darkscreenmovement++;
                     //hurdle2.rectangle.Y += 1000;
                     //hurdle2.rectangle.Y = random2;
                     //hurdle2.rectangle.X = random;
+
+                    //Set hurdle2 to random generate.
                     hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
 
                     hurdle2.rectangle.X -= 10;
                 }
+
+                //Set close screen.
                 backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
 
-                int timer = 1;
-                int limit = 5;
-                float countDuration = 1f;
-                float currentTime = 0f;
-
-                currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                if(currentTime >= countDuration)
-                {
-                    timer++;
-                    currentTime -= countDuration;
-                    
-                }
-                if(timer >= limit)
-                {
-                    darkscreenmovement++;
-                    timer = 0;                    
-                }
-
-
+                //Update.
                 scrolling1.Update();
                 scrolling2.Update();
                 backGround1.Update();
@@ -375,7 +334,6 @@ namespace TestGame
                 backGround3.Update();
                 backGround4.Update();
                 backGround5.Update();
-
                 hurdle1.Update();
                 hurdle2.Update();
                 ScoreUpadate(gameTime);
@@ -383,17 +341,13 @@ namespace TestGame
                 isLoading = false;
             }
 
-
-
-
-
-
             base.Update(gameTime);
-
-
-
         }
 
+        /// <summary>
+        /// Set score automatically increase.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void ScoreUpadate(GameTime gameTime)
         {
             timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds / 2;
@@ -419,6 +373,7 @@ namespace TestGame
             spriteBatch.Begin();
             String checkScore = ReadHighScore();
 
+            //Draw start memu element.
             if (gameState == GameState.StartMenu)
             {
                 string saveScore = ReadHighScore();
@@ -429,10 +384,8 @@ namespace TestGame
                 menu.Draw(spriteBatch);
 
             }
-            if (gameState == GameState.Loading)
-            {
-                spriteBatch.Draw(loadingScreen, new Vector2((GraphicsDevice.Viewport.Width / 2) - (loadingScreen.Width / 2), (GraphicsDevice.Viewport.Height / 2) - (loadingScreen.Height / 2)), Color.YellowGreen);
-            }
+
+            //Draw element playing state.
             if (gameState == GameState.Playing)
             {
                 backGround1.Drow(spriteBatch);
@@ -446,15 +399,20 @@ namespace TestGame
                 runner.Draw(spriteBatch);
                 hurdle1.Drow(spriteBatch);
                 hurdle2.Drow(spriteBatch);
+
+                //Display score and player name.
                 spriteBatch.DrawString(font, "Score: " + score, new Vector2(1700, 10), Color.White);
                 spriteBatch.DrawString(font, "Player: " + menu.PlayerName, new Vector2(800, 10), Color.White);
+
+                //Save high score holder and indicate state(High Score).
                 if (score > Int32.Parse(checkScore))
                 {
                     spriteBatch.DrawString(font, "High Score ", new Vector2(100, 10), Color.White);
                     playre = menu.PlayerName;
                 }
-
             }
+
+            //Draw pused state element.
             if (gameState == GameState.Paused)
             {
                 spriteBatch.DrawString(font, "Current Score  " + score, new Vector2(100, 10), Color.White);
@@ -468,13 +426,14 @@ namespace TestGame
             backGround6.Drow(spriteBatch);
 
             spriteBatch.End();
-
-
-
             base.Draw(gameTime);
         }
 
-
+        /// <summary>
+        /// Difine mouse click event.
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
         public void MouseClick(int X, int Y)
         {
             Rectangle mouseClickRect = new Rectangle(X, Y, 10, 10);
@@ -483,13 +442,16 @@ namespace TestGame
             {
                 Rectangle startButtonRect = new Rectangle((int)startButtonPosition.X, (int)startButtonPosition.Y, 100, 20);
                 Rectangle exitButtonRect = new Rectangle((int)exitButtonPosition.X, (int)exitButtonPosition.Y, 100, 20);
-
-                if (mouseClickRect.Intersects(startButtonRect)) //player clicked start button
+                
+                //player clicked start button
+                if (mouseClickRect.Intersects(startButtonRect)) 
                 {
                     gameState = GameState.Playing;
                     isLoading = false;
                 }
-                else if (mouseClickRect.Intersects(exitButtonRect)) //player clicked exit button
+
+                //player clicked exit button
+                else if (mouseClickRect.Intersects(exitButtonRect)) 
                 {
                     Exit();
                 }
@@ -508,6 +470,7 @@ namespace TestGame
                 isLoading = false;
             }
 
+            //Set game state to paused.
             if (gameState == GameState.Paused)
             {
                 Rectangle resumeButtonRect = new Rectangle((int)resumeButtonPosition.X, (int)resumeButtonPosition.Y, 100, 20);
@@ -519,6 +482,10 @@ namespace TestGame
             }
         }
 
+        /// <summary>
+        /// Save high score.
+        /// </summary>
+        /// <param name="score"></param>
         public void SaveHighScore(int score)
         {
             try
@@ -526,9 +493,6 @@ namespace TestGame
                 TextWriter writer = new StreamWriter("score.txt");
                 writer.WriteLine(score);
                 writer.Close();
-
-
-
             }
             catch (Exception e)
             {
@@ -536,6 +500,10 @@ namespace TestGame
             }
         }
 
+        /// <summary>
+        /// Read Hig score.
+        /// </summary>
+        /// <returns></returns>
         public string ReadHighScore()
         {
             string read = "";
@@ -553,6 +521,11 @@ namespace TestGame
             }
             return read;
         }
+
+        /// <summary>
+        /// Save high score holder name.
+        /// </summary>
+        /// <param name="player"></param>
         public void SavePlayer(String player)
         {
             try
@@ -560,9 +533,6 @@ namespace TestGame
                 TextWriter writer = new StreamWriter("player.txt");
                 writer.WriteLine(player);
                 writer.Close();
-
-
-
             }
             catch (Exception e)
             {
@@ -570,6 +540,10 @@ namespace TestGame
             }
         }
 
+        /// <summary>
+        /// Read high score player name.
+        /// </summary>
+        /// <returns></returns>
         public string ReadPlayer()
         {
             string read = "";
@@ -579,7 +553,6 @@ namespace TestGame
                 read = readHig.ReadLine();
                 readHig.Close();
                 return read;
-
             }
             catch (Exception e)
             {
@@ -588,11 +561,10 @@ namespace TestGame
             return read;
         }
 
-        public void LoadGame()
-        {
-
-        }
-
+        /// <summary>
+        /// Create bad hurdles list.
+        /// </summary>
+        /// <returns></returns>
         public List<string> HurdlesList()
         {
             List<string> HurdlesName = new List<string>();
@@ -608,6 +580,10 @@ namespace TestGame
             return HurdlesName;
         }
 
+        /// <summary>
+        /// Create good hurdles list.
+        /// </summary>
+        /// <returns></returns>
         public List<string> HurdlesGood()
         {
             List<string> HurdlesGood = new List<string>();
@@ -623,8 +599,6 @@ namespace TestGame
             HurdlesGood.Add("(g)study_time_pickup");
             return HurdlesGood;
         }
-
-        
     }
 }
 
