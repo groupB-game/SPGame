@@ -53,14 +53,14 @@ namespace TestGame
         MouseState previousMouseState;
         Texture2D pushButton;
 
-        
+
 
         //Game Main Manu.
         MainManu menu = new MainManu();
 
         //Game state initialize
         private GameState gameState;
-        
+
         //Declare runner variable.
         Animation runner;
 
@@ -76,7 +76,7 @@ namespace TestGame
 
         Vector2 velocity;
 
-      
+
         //Hurdles variable
         private Hurdles hurdle1, hurdle2;
 
@@ -315,7 +315,7 @@ namespace TestGame
                     int random2 = r.Next(100, 600);
                     if(score > 0)
                     {
-                        score -= 25;
+                    score -= 25;
                     }
                     darkscreenmovement = darkscreenmovement + 10;
                     //hurdle2.rectangle.Y += 1000;
@@ -323,7 +323,7 @@ namespace TestGame
                     //hurdle2.rectangle.X = random;
 
                     //Set hurdle2 to random generate.
-                      hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
+                    hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
 
                     hurdle2.rectangle.X -= 10;
                 }
@@ -460,7 +460,7 @@ namespace TestGame
             {
                 Rectangle startButtonRect = new Rectangle((int)startButtonPosition.X, (int)startButtonPosition.Y, 100, 20);
                 Rectangle exitButtonRect = new Rectangle((int)exitButtonPosition.X, (int)exitButtonPosition.Y, 100, 20);
-                
+
                 //player clicked start button
                 if (mouseClickRect.Intersects(startButtonRect)) 
                 {
