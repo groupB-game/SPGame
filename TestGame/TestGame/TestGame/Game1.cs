@@ -105,10 +105,7 @@ namespace TestGame
         protected override void Initialize()
         {
             //Delete this two method once you run.
-            SaveHighScore(score);
-            SavePlayer(playre);
-
-
+            
 
             playre = ReadPlayer();
 
@@ -333,7 +330,7 @@ namespace TestGame
                 {
                     Random r = new Random();
                     int r1 = r.Next(0, 8);
-                    List<string> Hurdlelist = HurdlesList();
+                    List<string> Hurdlelist = HurdlesGood();
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
@@ -590,7 +587,22 @@ namespace TestGame
             HurdlesName.Add("(b)not_enough_sleep_pickup");
             HurdlesName.Add("(b)repeat_paper_pickup");
             return HurdlesName;
+        }
 
+        public List<string> HurdlesGood()
+        {
+            List<string> HurdlesGood = new List<string>();
+            HurdlesGood.Add("(g)a+_pickup");
+            HurdlesGood.Add("(g)goals_met_pickup");
+            HurdlesGood.Add("(g)good_health_pickup");
+            HurdlesGood.Add("(g)good_sleep_pickup");
+            HurdlesGood.Add("(g)good_tutor_pickup");
+            HurdlesGood.Add("(g)new_skills_pickup");
+            HurdlesGood.Add("(g)notes_taken_pickup");
+            HurdlesGood.Add("(g)on_time_pickup");
+            HurdlesGood.Add("(g)passed_paper_pickup");
+            HurdlesGood.Add("(g)study_time_pickup");
+            return HurdlesGood;
         }
     }
 }
