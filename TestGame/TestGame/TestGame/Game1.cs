@@ -80,7 +80,8 @@ namespace TestGame
         //Hurdles
         private Hurdles hurdle1, hurdle2;
 
-        List<string> randomisedPickupList = new List<string>();
+        //moved to end for now
+        //List<string> randomisedPickupList = new List<string>();
 
 
         public Game1()
@@ -156,42 +157,43 @@ namespace TestGame
             screenWidth = GraphicsDevice.Viewport.Width;
             screeHeight = GraphicsDevice.Viewport.Height;
 
+            //moved to end for now
             // Load hurdles into string array named hurdlepickup.
-            List<string> hurdlePickup = new List<string>
-            {
-                "Pickups/(b)bad_tutor_pickup",
-                "Pickups/(b)f_pickup",
-                "Pickups/(b)flash_drive_pickup",
-                "Pickups/(b)flu_pickup",
-                "Pickups/(b)forgot_due_date_pickup",
-                "Pickups/(b)goals_missed_pickup",
-                "Pickups/(b)missed_alarm_pickup",
-                "Pickups/(b)moodle_down_pickup",
-                "Pickups/(b)not_enough_sleep_pickup",
-                "Pickups/(b)repeat_paper_pickup",
-                "Pickups/(g)a+_pickup",
-                "Pickups/(g)goals_met_pickup",
-                "Pickups/(g)good_health_pickup",
-                "Pickups/(g)good_sleep_pickup",
-                "Pickups/(g)good_tutor_pickup",
-                "Pickups/(g)new_skills_pickup",
-                "Pickups/(g)notes_taken_pickup",
-                "Pickups/(g)on_time_pickup",
-                "Pickups/(g)passed_paper_pickup",
-                "Pickups/(g)study_time_pickup"
-            };
+            //List<string> hurdlePickup = new List<string>
+            //{
+            //    "Pickups/(b)bad_tutor_pickup",
+            //    "Pickups/(b)f_pickup",
+            //    "Pickups/(b)flash_drive_pickup",
+            //    "Pickups/(b)flu_pickup",
+            //    "Pickups/(b)forgot_due_date_pickup",
+            //    "Pickups/(b)goals_missed_pickup",
+            //    "Pickups/(b)missed_alarm_pickup",
+            //    "Pickups/(b)moodle_down_pickup",
+            //    "Pickups/(b)not_enough_sleep_pickup",
+            //    "Pickups/(b)repeat_paper_pickup",
+            //    "Pickups/(g)a+_pickup",
+            //    "Pickups/(g)goals_met_pickup",
+            //    "Pickups/(g)good_health_pickup",
+            //    "Pickups/(g)good_sleep_pickup",
+            //    "Pickups/(g)good_tutor_pickup",
+            //    "Pickups/(g)new_skills_pickup",
+            //    "Pickups/(g)notes_taken_pickup",
+            //    "Pickups/(g)on_time_pickup",
+            //    "Pickups/(g)passed_paper_pickup",
+            //    "Pickups/(g)study_time_pickup"
+            //};
 
             //List<string> pickupList = new List<string>(hurdlePickup);
 
-            for (int i = 0; i < 20; i++)
-            {
-                Random randomPickupTexture = new Random();
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    Random randomPickupTexture = new Random();
 
-                int hurdleIndex = randomPickupTexture.Next(hurdlePickup.Count);
-                randomisedPickupList.Add(hurdlePickup[hurdleIndex]);
+            //    int hurdleIndex = randomPickupTexture.Next(hurdlePickup.Count);
+            //    randomisedPickupList.Add(hurdlePickup[hurdleIndex]);
 
-                hurdlePickup.RemoveAt(hurdleIndex);
-            }
+            //    hurdlePickup.RemoveAt(hurdleIndex);
+            //}
 
 
             //Start Menu item Loading
@@ -548,5 +550,56 @@ namespace TestGame
          //       hurdleList.Remove(toRemove);
          //   }
        // }
+        public void pickups()
+        {
+            List<string> randomisedGoodPickups = new List<string>();
+            List<string> randomisedBadPickups = new List<string>();
+
+            Random randomisePickup = new Random();
+
+            List<string> goodPickups = new List<string>
+            {
+                "Pickups/(g)a+_pickup",
+                "Pickups/(g)goals_met_pickup",
+                "Pickups/(g)good_health_pickup",
+                "Pickups/(g)good_sleep_pickup",
+                "Pickups/(g)good_tutor_pickup",
+                "Pickups/(g)new_skills_pickup",
+                "Pickups/(g)notes_taken_pickup",
+                "Pickups/(g)on_time_pickup",
+                "Pickups/(g)passed_paper_pickup",
+                "Pickups/(g)study_time_pickup"
+            };
+
+            for (int i = 0; i < 20; i++)
+            {
+                int hurdleIndex = randomisePickup.Next(goodPickups.Count);
+                randomisedGoodPickups.Add(goodPickups[hurdleIndex]);
+
+                goodPickups.RemoveAt(hurdleIndex);
+            }
+
+            List<string> badPickups = new List<string>
+            {
+                "Pickups/(b)bad_tutor_pickup",
+                "Pickups/(b)f_pickup",
+                "Pickups/(b)flash_drive_pickup",
+                "Pickups/(b)flu_pickup",
+                "Pickups/(b)forgot_due_date_pickup",
+                "Pickups/(b)goals_missed_pickup",
+                "Pickups/(b)missed_alarm_pickup",
+                "Pickups/(b)moodle_down_pickup",
+                "Pickups/(b)not_enough_sleep_pickup",
+                "Pickups/(b)repeat_paper_pickup"
+            };
+
+            for (int i = 0; i < 20; i++)
+            {
+                int hurdleIndex = randomisePickup.Next(badPickups.Count);
+                randomisedBadPickups.Add(badPickups[hurdleIndex]);
+
+                badPickups.RemoveAt(hurdleIndex);
+            }
+        }
     }
 }
