@@ -68,6 +68,10 @@ namespace TestGame
         private ScrollingPath scrolling1, scrolling2;
         private BackGround backGround1, backGround2, backGround3, backGround4, backGround5, backGround6;
 
+        // Audio objects
+        SoundEffect startScreenMusic;
+        SoundEffect gameMusic;
+
         //Screen parameters.
         int screenWidth;
         int screeHeight;
@@ -160,6 +164,10 @@ namespace TestGame
             loadingScreen = Content.Load<Texture2D>("StartScreen/loading");
             pushButton = Content.Load<Texture2D>("StartScreen/pause");
             resumeButton = Content.Load<Texture2D>("StartScreen/resume");
+
+            // Load sounds
+            startScreenMusic = Content.Load<SoundEffect>("start_screen_music");
+            gameMusic = Content.Load<SoundEffect>("game_music");
         }
 
         /// <summary>
@@ -181,6 +189,9 @@ namespace TestGame
             //Manu Button Update.
             menu.Update();
 
+            // Audio
+            SoundEffectInstance startMusic = startScreenMusic.CreateInstance();
+            //SoundEffectInstance gameMusic = gameMusic.CreateInstance();
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
