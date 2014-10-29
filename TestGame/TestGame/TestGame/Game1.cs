@@ -90,7 +90,7 @@ namespace TestGame
             graphics = new GraphicsDeviceManager(this);
 
             //Define screen size
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             Content.RootDirectory = "Content";
