@@ -70,6 +70,10 @@ namespace TestGame
         private ScrollingPath scrolling1, scrolling2;
         private BackGround backGround1, backGround2, backGround3, backGround4, backGround5, backGround6;
 
+        // Audio objects
+        Song gameMusic;
+        bool songstart = false;
+
         //Screen parameters.
         int screenWidth;
         int screeHeight;
@@ -88,7 +92,7 @@ namespace TestGame
             graphics = new GraphicsDeviceManager(this);
 
             //Define screen size
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
             Content.RootDirectory = "Content";
@@ -168,6 +172,10 @@ namespace TestGame
             loadingScreen = Content.Load<Texture2D>("StartScreen/loading");
             pushButton = Content.Load<Texture2D>("StartScreen/pause");
             resumeButton = Content.Load<Texture2D>("StartScreen/resume");
+
+            // Load audio objects
+            gameMusic = Content.Load<Song>("game_music");
+            MediaPlayer.IsRepeating = true;
         }
 
         /// <summary>
@@ -189,6 +197,12 @@ namespace TestGame
             //Manu Button Update.
             menu.Update();
 
+            // Play audio objects
+            if (!songstart)
+            {
+                MediaPlayer.Play(gameMusic);
+                songstart = true;
+            } 
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -336,20 +350,23 @@ namespace TestGame
                     hurdle2.rectangle.X -= 10;
                 }
 
+                //Partial code for a gradual increase in unemployment screen
+                //float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                //float creepTimer = 10;
+
+                //creepTimer -= elapsedTime;
+
+                //if (creepTimer >= 0)
+                //{
+                //    darkscreenmovement++;
+                //    creepTimer = 100f;
+                //}
+
+
                 //Set close screen.
                 backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
 
-                float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                float creepTimer = 1f;
-
-                creepTimer -= elapsedTime;
-
-                if(creepTimer <= 0)
-                {
-                    darkscreenmovement++;
-                    creepTimer = 1f;
-                }
-
+                
                 //Update.
                 scrolling1.Update();
                 scrolling2.Update();
