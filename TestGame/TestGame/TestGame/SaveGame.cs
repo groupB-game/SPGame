@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TestGame
 {
+    /// <summary>
+    /// Save high score and player name.
+    /// </summary>
     public class  SaveGame
     {
         public string playerName;
