@@ -339,16 +339,17 @@ namespace TestGame
                     hurdle2.rectangle.X -= 10;
                 }
 
-                float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-                float creepTimer = 10;
+                //Partial code for a gradual increase in unemployment screen
+                //float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                //float creepTimer = 10;
 
-                creepTimer -= elapsedTime;
+                //creepTimer -= elapsedTime;
 
-                if (creepTimer >= 0)
-                {
-                    darkscreenmovement++;
-                    creepTimer = 100f;
-                }
+                //if (creepTimer >= 0)
+                //{
+                //    darkscreenmovement++;
+                //    creepTimer = 100f;
+                //}
 
 
                 //Set close screen.
