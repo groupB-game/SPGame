@@ -69,8 +69,8 @@ namespace TestGame
         private BackGround backGround1, backGround2, backGround3, backGround4, backGround5, backGround6;
 
         // Audio objects
-        SoundEffect startScreenMusic;
-        SoundEffect gameMusic;
+        Song gameMusic;
+        bool songstart = false;
 
         //Screen parameters.
         int screenWidth;
@@ -165,9 +165,9 @@ namespace TestGame
             pushButton = Content.Load<Texture2D>("StartScreen/pause");
             resumeButton = Content.Load<Texture2D>("StartScreen/resume");
 
-            // Load sounds
-            startScreenMusic = Content.Load<SoundEffect>("start_screen_music");
-            gameMusic = Content.Load<SoundEffect>("game_music");
+            // Load audio objects
+            gameMusic = Content.Load<Song>("game_music");
+            MediaPlayer.IsRepeating = true;
         }
 
         /// <summary>
@@ -189,9 +189,12 @@ namespace TestGame
             //Manu Button Update.
             menu.Update();
 
-            // Audio
-            SoundEffectInstance startMusic = startScreenMusic.CreateInstance();
-            //SoundEffectInstance gameMusic = gameMusic.CreateInstance();
+            // Play audio objects
+            if (!songstart)
+            {
+                MediaPlayer.Play(gameMusic);
+                songstart = true;
+            } 
 
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
