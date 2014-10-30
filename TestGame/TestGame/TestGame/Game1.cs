@@ -35,12 +35,14 @@ namespace TestGame
         //hold frame of sprite.
         int count = 0;
         
-        //Score
+        //Score variables.
         private int score = 0;
         private string playre = "";
         private SpriteFont font;
         float timer;
         int interval = 100;
+
+        //Startup screen variables.
         Texture2D startButton;
         Texture2D exitButton;
         Texture2D resumeButton;
@@ -77,7 +79,7 @@ namespace TestGame
         int screeHeight;
         public int darkscreenmovement = 0;
 
-
+        //set speed.
         Vector2 velocity;
 
 
@@ -104,6 +106,12 @@ namespace TestGame
         /// </summary>
         protected override void Initialize()
         {
+
+            //Delete following two method.(SaveHighScore and SavePlayer) once your run the game. 
+            //This will create score and player dat files.
+               //SaveHighScore(score);
+              // SavePlayer(playre);
+
             //Assign high score holder.
             playre = ReadPlayer();
 
