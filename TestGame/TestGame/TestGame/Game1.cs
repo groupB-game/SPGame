@@ -82,7 +82,7 @@ namespace TestGame
 
 
         //Hurdles variable
-        private Hurdles hurdle1, hurdle2;
+        private Hurdles hurdle1, hurdle2, hurdle3, hurdle4;
 
 
         public Game1()
@@ -155,6 +155,8 @@ namespace TestGame
             //Load hurdles.
             hurdle1 = new Hurdles(Content.Load<Texture2D>("Pickups/(b)missed_alarm_pickup"), new Rectangle(2010, 790, 150, 150));
             hurdle2 = new Hurdles(Content.Load<Texture2D>("Pickups/(b)missed_alarm_pickup"), new Rectangle(3800, 650, 150, 150));
+            hurdle3 = new Hurdles(Content.Load<Texture2D>("Pickups/(b)missed_alarm_pickup"), new Rectangle(1500, 400, 150, 150));
+            hurdle4 = new Hurdles(Content.Load<Texture2D>("Pickups/(b)missed_alarm_pickup"), new Rectangle(575, 600, 150, 150));
 
             //Start Manu item Loading.
             IsMouseVisible = true;
@@ -296,9 +298,16 @@ namespace TestGame
                 }
                 if (hurdle2.rectangle.X + 2000 <= 0)
                 {
-                    hurdle2.rectangle.X = hurdle1.rectangle.X + 2000;
+                    hurdle2.rectangle.X = hurdle3.rectangle.X + 2000;
                 }
-
+                if (hurdle3.rectangle.X + 2000 <= 0)
+                {
+                    hurdle3.rectangle.X = hurdle4.rectangle.X + 2000;
+                }
+                if (hurdle4.rectangle.X + 2000 <= 0)
+                {
+                    hurdle4.rectangle.X = hurdle1.rectangle.X + 2000;
+                }
                 //Collision hurdle1.
                 if (runner.PositionRectangle.Intersects(hurdle1.PositionRectangle))
                 {
@@ -309,7 +318,10 @@ namespace TestGame
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
                     score += 10;
-                    darkscreenmovement = darkscreenmovement - 10;
+                    if (backGround6.rectangle.X >= -1920)
+                    {
+                        darkscreenmovement = darkscreenmovement - 10;
+                    }
                     hurdle1.rectangle.Y += 1000;
                     //hurdle1.rectangle.Y = random2;
                     // hurdle1.rectangle.X = random;
@@ -323,7 +335,7 @@ namespace TestGame
                 {
                     Random r = new Random();
                     int r1 = r.Next(0, 8);
-                    List<string> Hurdlelist = HurdlesList();
+                    List<string> Hurdlelist = HurdlesBad();
                     string randomname = Hurdlelist[r1];
                     int random = r.Next(1366, 1800);
                     int random2 = r.Next(100, 600);
@@ -342,6 +354,52 @@ namespace TestGame
                     hurdle2.rectangle.X -= 10;
                 }
 
+                //Collision hurdle3.
+                if (runner.PositionRectangle.Intersects(hurdle3.PositionRectangle))
+                {
+                    Random r = new Random();
+                    int r1 = r.Next(0, 8);
+                    List<string> Hurdlelist = HurdlesGood();
+                    string randomname = Hurdlelist[r1];
+                    int random = r.Next(1366, 1800);
+                    int random2 = r.Next(100, 600);
+                    score += 10;
+                    if (backGround6.rectangle.X >= -1920)
+                    {
+                        darkscreenmovement = darkscreenmovement - 10;
+                    }
+                    hurdle1.rectangle.Y += 1000;
+                    //hurdle3.rectangle.Y = random2;
+                    // hurdle3.rectangle.X = random;
+                    // hurdle3.rectangle.X -= 10;
+                    hurdle3 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
+                    hurdle3.rectangle.X -= 10;
+                }
+
+                //Collision hurdle4.
+                if (runner.PositionRectangle.Intersects(hurdle4.PositionRectangle))
+                {
+                    Random r = new Random();
+                    int r1 = r.Next(0, 8);
+                    List<string> Hurdlelist = HurdlesBad();
+                    string randomname = Hurdlelist[r1];
+                    int random = r.Next(1366, 1800);
+                    int random2 = r.Next(100, 600);
+                    if (score > 0)
+                    {
+                        score -= 25;
+                    }
+                    darkscreenmovement = darkscreenmovement + 10;
+                    //hurdle4.rectangle.Y += 1000;
+                    //hurdle4.rectangle.Y = random2;
+                    //hurdle4.rectangle.X = random;
+
+                    //Set hurdle2 to random generate.
+                    hurdle4 = new Hurdles(Content.Load<Texture2D>("Pickups/" + randomname), new Rectangle(random, random2, 150, 150));
+
+                    hurdle4.rectangle.X -= 10;
+                }
+
                 //Partial code for a gradual increase in unemployment screen
                 //float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 //float creepTimer = 10;
@@ -356,7 +414,7 @@ namespace TestGame
 
 
                 //Set close screen.
-                backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1920 + darkscreenmovement, 0, 1920, 1080));
+                backGround6 = new BackGround(Content.Load<Texture2D>("StartScreen/darkscreen"), new Rectangle(-1900 + darkscreenmovement, 0, 1920, 1080));
 
                 
                 //Update.
@@ -598,19 +656,19 @@ namespace TestGame
         /// Create bad hurdles list.
         /// </summary>
         /// <returns></returns>
-        public List<string> HurdlesList()
+        public List<string> HurdlesBad()
         {
-            List<string> HurdlesName = new List<string>();
-            HurdlesName.Add("(b)f_pickup");
-            HurdlesName.Add("(b)flash_drive_pickup");
-            HurdlesName.Add("(b)flu_pickup");
-            HurdlesName.Add("(b)forgot_due_date_pickup");
-            HurdlesName.Add("(b)goals_missed_pickup");
-            HurdlesName.Add("(b)missed_alarm_pickup");
-            HurdlesName.Add("(b)moodle_down_pickup");
-            HurdlesName.Add("(b)not_enough_sleep_pickup");
-            HurdlesName.Add("(b)repeat_paper_pickup");
-            return HurdlesName;
+            List<string> HurdlesBad = new List<string>();
+            HurdlesBad.Add("(b)f_pickup");
+            HurdlesBad.Add("(b)flash_drive_pickup");
+            HurdlesBad.Add("(b)flu_pickup");
+            HurdlesBad.Add("(b)forgot_due_date_pickup");
+            HurdlesBad.Add("(b)goals_missed_pickup");
+            HurdlesBad.Add("(b)missed_alarm_pickup");
+            HurdlesBad.Add("(b)moodle_down_pickup");
+            HurdlesBad.Add("(b)not_enough_sleep_pickup");
+            HurdlesBad.Add("(b)repeat_paper_pickup");
+            return HurdlesBad;
         }
 
         /// <summary>
